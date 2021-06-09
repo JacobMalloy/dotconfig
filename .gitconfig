@@ -3,3 +3,4 @@
 	name = Jacob Malloy
 [core]
 	excludesfile = $HOME/.gitignore
+	editor = vim

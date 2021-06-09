@@ -1,0 +1,5 @@
+[user]
+	email = jmalloy1@vols.utk.edu
+	name = Jacob Malloy
+[core]
+	excludesfile = $HOME/.gitignore

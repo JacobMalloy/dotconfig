@@ -10,7 +10,7 @@ fi
 
 zmodload -i zsh/complist
 
-HISTFILE=$HOME/.zsh_history
+HISTFILE=$HOME/.config/zsh/.zsh_history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 

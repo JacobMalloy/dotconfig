@@ -20,3 +20,11 @@ mkdir -p $HOME/.config/zsh
 
 ln -sf $PWD/config/zsh/.zshrc $HOME/.config/zsh/.zshrc
 ln -sf $PWD/zshenv $HOME/.zshenv
+
+
+echo "install ssh"
+mkdir -p $HOME/.ssh
+
+chmod 700 ~/.ssh
+ln -sf $PWD/ssh/authorized_keys $HOME/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys

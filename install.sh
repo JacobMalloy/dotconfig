@@ -28,3 +28,5 @@ mkdir -p $HOME/.ssh
 chmod 700 ~/.ssh
 ln -sf $PWD/ssh/authorized_keys $HOME/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
+
+ln -sf $PWD/ssh/config $HOME/.ssh/config

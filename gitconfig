@@ -1,5 +1,6 @@
 [user]
 	name = Jacob Malloy
+	useConfigOnly = true
 [core]
 	excludesfile = $HOME/.gitignore
 	editor = vim

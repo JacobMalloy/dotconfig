@@ -1,24 +1,31 @@
 Host linux
     Hostname 192.168.86.110
     User sjakem
+    ForwardAgent yes
 Host vpn
     Hostname 192.168.86.105
     User pi
+    ForwardAgent yes
 Host nas
     Hostname 192.168.86.226
     User sjakem
 Host hydra
     Hostname hydra30.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes
 Host tesla
     Hostname tesla25.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes
 Host peru
     Hostname peru3.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes
 Host brazil
     Hostname brazil.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes
 Host argentina
     Hostname argentina.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes

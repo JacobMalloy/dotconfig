@@ -2,7 +2,7 @@
 	name = Jacob Malloy
 	useConfigOnly = true
 [core]
-	excludesfile = $HOME/.gitignore
+	excludesfile = ~/.gitignore#$HOME/.gitignore
 	editor = vim
 [pull]
 	ff = only

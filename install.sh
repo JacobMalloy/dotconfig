@@ -31,3 +31,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ln -sf $PWD/ssh/config $HOME/.ssh/config
 chmod 644 ~/.ssh/config
+
+
+ln -sf $PWD/ssh/rc $HOME/.ssh/rc
+chmod 644 ~/.ssh/rc

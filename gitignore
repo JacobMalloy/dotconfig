@@ -38,3 +38,9 @@ __pycache__/
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Yed files#
+###############
+.yed/
+.yedrc
+tags

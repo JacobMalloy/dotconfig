@@ -35,3 +35,5 @@ chmod 644 ~/.ssh/config
 
 ln -sf $PWD/ssh/rc $HOME/.ssh/rc
 chmod 644 ~/.ssh/rc
+
+./yed_install.sh

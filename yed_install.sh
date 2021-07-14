@@ -45,5 +45,5 @@ for p in ${pids[@]}; do
 done
 
 echo "Moving yedrc."
-cp ${YED_DIR}/yedrc ${HOME_YED_DIR}
+ln -sf ${YED_DIR}/yedrc ${HOME_YED_DIR}
 echo "Done."

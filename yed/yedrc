@@ -113,7 +113,7 @@ vimish-bind  normal  "<"          unindent
 vimish-bind  normal  "spc g"      grep
 vimish-bind  normal  "spc f"      find-file
 vimish-bind  normal  "spc a l"    command-prompt "align "
-vimish-bind  normal  "ctrl-b"     multi "builder-start" "builder-view-output" "special-buffer-prepare-unfocus *builder-output"
+vimish-bind  normal  "ctrl-b"     multi "write-buffer" "builder-start" "builder-view-output" "special-buffer-prepare-unfocus *builder-output"
 vimish-bind  normal  "E E"        builder-jump-to-error
 vimish-bind  normal  "spc t"      ctags-find
 vimish-bind  normal  "T T"        multi jump-stack-push ctags-jump-to-definition
@@ -122,7 +122,7 @@ vimish-bind  normal  "S S"        command-prompt "shell-run "
 vimish-bind  normal  "tab"        go-menu
 vimish-bind  normal  "ctrl-/"     kammerdienerb-find-cursor-word
 vimish-bind  normal  "%"          brace-goto-other
-vimish-bind  normal  "ctrl-y"     undo
+vimish-bind  normal  "ctrl-z"     undo
 vimish-bind  insert  "q q"        cursor-right
 vimish-bind  insert  "j j"        vimish-exit-insert
 

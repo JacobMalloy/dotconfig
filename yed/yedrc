@@ -90,7 +90,7 @@ set use-ctags "no"
 #set go-menu-force-split             "no"
 
 ### @style ###
-style first-dark
+style casey
 
 ### @keybindings ###
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle

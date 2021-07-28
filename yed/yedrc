@@ -69,7 +69,7 @@ plugin-load 'hook'
 plugin-load 'jump_stack'
 plugin-load 'shell_run'
 plugin-load 'macro'
-plugin-load 'chatty_kathy'
+#plugin-load 'chatty_kathy'
 
 ### @variables ###
 set tab-width                     4
@@ -123,6 +123,7 @@ vimish-bind  normal  "tab"        go-menu
 vimish-bind  normal  "ctrl-/"     kammerdienerb-find-cursor-word
 vimish-bind  normal  "%"          brace-goto-other
 vimish-bind  normal  "ctrl-z"     undo
+vimish-bind  normal  "ctrl-y"     redo
 vimish-bind  insert  "q q"        cursor-right
 vimish-bind  insert  "j j"        vimish-exit-insert
 
@@ -137,5 +138,3 @@ hook post-write                 \
 # Load directory-specific rc file.
 yedrc-load ".yedrc"
 
-# set builder-build-command 'gcc -g -shared -fPIC -lyed add_template.c -o add_template.so'
-# plugin-load 'add_template'

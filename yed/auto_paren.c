@@ -31,6 +31,11 @@ void completer_auto_match_buff_post_insert_handler(yed_event *event) {
     int save_col;
     int save_row;
     char match = 0;
+    static char last=0;
+
+    if ( !event->frame ) {
+        return;
+    }
 
     if ( event->key == '(' ) {
         if ( !yed_var_is_truthy("disable-auto-paren") ) {
@@ -52,13 +57,15 @@ void completer_auto_match_buff_post_insert_handler(yed_event *event) {
         if ( !yed_var_is_truthy("disable-auto-brace") ) {
             match = '}';
         }
+    }else if(event->key == ')'&&last == '('){
+        if ( !yed_var_is_truthy("disable-auto-paren") ) {
+            YEXE("delete-back");
+            yed_move_cursor_within_frame(event->frame,0,1);
+        }
     }
+    last = event->key;
 
     if ( match == 0 ) return;
-
-    if ( !event->frame ) {
-        return;
-    }
 
     if ( !event->frame->buffer ) {
         return;
@@ -108,7 +115,6 @@ void completer_auto_match_buff_post_insert_handler(yed_event *event) {
         }
 
         yed_set_cursor_within_frame(frame, save_row+1, j+1);
-
         return;
     }
 

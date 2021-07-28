@@ -1,21 +1,9 @@
 /* File:
- * Author: Zach McMichael
+ * Author: Jacob Malloy
  * Description:
  */
-#include <iostream>
-#include <cstdlib>
-#include <iomanip>
-#include <fstream>
-#include <string>
-#include <map>
-#include <sstream>
-#include <utility>
-#include <functional>
-
-using namespace std;
 
 int main(int argc, char* argv[]) {
 
-        exit(0);
+        return 0;
 }
-

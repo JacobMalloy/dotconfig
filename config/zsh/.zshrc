@@ -1,4 +1,5 @@
 source $HOME/.config/aliases
+source $HOME/.config/variables
 
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)

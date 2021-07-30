@@ -13,16 +13,7 @@ mkdir -p ~/.yed
 C_FLAGS="-O3 -shared -fPIC -Wall -Werror"
 CC=gcc
 
-if [ -d /opt/yed ]; then # M1
-    YED_INSTALLATION_PREFIX="/opt/yed"
-    C_FLAGS="-arch arm64 ${C_FLAGS}"
-    CC=clang
-elif [ -f /usr/local/bin/yed ]; then # Older Mac
-    YED_INSTALLATION_PREFIX="/usr/local"
-else
-    YED_INSTALLATION_PREFIX="/usr" # Linux probably
-fi
-C_FLAGS+=" -I${YED_INSTALLATION_PREFIX}/include -L${YED_INSTALLATION_PREFIX}/lib -lyed"
+C_FLAGS+=" -I$(yed --print-include-dir) -L$(yed --print-lib-dir) -lyed"
 
 
 YED_DIR=${DIR}/yed

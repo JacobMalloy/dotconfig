@@ -1,5 +1,4 @@
 #include <yed/plugin.h>
-//#include <yed/menu_frame.h>
 
 void kammerdienerb_special_buffer_prepare_focus(int n_args, char **args);
 void kammerdienerb_special_buffer_prepare_jump_focus(int n_args, char **args);
@@ -46,7 +45,6 @@ int yed_plugin_boot(yed_plugin *self) {
     yed_plugin_set_command(self, "special-buffer-prepare-focus",      kammerdienerb_special_buffer_prepare_focus);
     yed_plugin_set_command(self, "special-buffer-prepare-jump-focus", kammerdienerb_special_buffer_prepare_jump_focus);
     yed_plugin_set_command(self, "special-buffer-prepare-unfocus",    kammerdienerb_special_buffer_prepare_unfocus);
-    yed_plugin_set_command(self, "qa",                                yed_default_command_quit);
     yed_log("\ninit.c: added overrides for 'special-buffer-prepare-*' commands");
 
     get_or_make_buffer(ARGS_SCRATCH_BUFF);
@@ -75,7 +73,7 @@ int yed_plugin_boot(yed_plugin *self) {
     if (file_exists_in_PATH("rg")) {
         yed_log("init.c: found an rg executable");
         YEXE("set", "grep-prg",      "rg --vimgrep '%' | sort");
-        YEXE("set", "find-file-prg", "rg --files | rg -i '(^[^/]*%)|(/[^/]*%[^/]*$)' | sort");
+        YEXE("set", "find-file-prg", "rg --files | rg '(^[^/]*%)|(/[^/]*%[^/]*$)' | sort");
     } else if (file_exists_in_PATH("fzf")) {
         yed_log("init.c: found a fzf executable");
         YEXE("set", "find-file-prg", "fzf --filter='%'");
@@ -127,6 +125,8 @@ int yed_plugin_boot(yed_plugin *self) {
 static int   stay_in_special_frame;
 static char *reshow_buff_name;
 
+#define GO_MENU_SPLIT_RATIO (2.5)
+
 void kammerdienerb_special_buffer_prepare_focus(int n_args, char **args) {
     yed_command     default_cmd;
     yed_frame      *frame;
@@ -141,7 +141,7 @@ void kammerdienerb_special_buffer_prepare_focus(int n_args, char **args) {
         return;
     }
 
-    if (ys->term_cols < (3 * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
+    if (ys->term_cols < (GO_MENU_SPLIT_RATIO * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
         default_cmd = yed_get_default_command("special-buffer-prepare-focus");
         if (default_cmd) {
             default_cmd(n_args, args);
@@ -221,7 +221,7 @@ void kammerdienerb_special_buffer_prepare_jump_focus(int n_args, char **args) {
         return;
     }
 
-    if (ys->term_cols < (3 * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
+    if (ys->term_cols < (GO_MENU_SPLIT_RATIO * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
         default_cmd = yed_get_default_command("special-buffer-prepare-jump-focus");
         if (default_cmd) {
             default_cmd(n_args, args);
@@ -296,7 +296,7 @@ void kammerdienerb_special_buffer_prepare_unfocus(int n_args, char **args) {
         return;
     }
 
-    if (ys->term_cols < (3 * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
+    if (ys->term_cols < (GO_MENU_SPLIT_RATIO * ys->term_rows) && !yed_var_is_truthy("go-menu-force-split")) {
         default_cmd = yed_get_default_command("special-buffer-prepare-unfocus");
         if (default_cmd) {
             default_cmd(n_args, args);
@@ -380,6 +380,9 @@ void kammerdienerb_go_menu(int n_args, char **args) {
     char                                         *bname;
 
     buff = get_or_make_buffer(ARGS_GO_MENU_BUFF);
+
+    buff->flags &= ~BUFF_RD_ONLY;
+
     yed_buff_clear_no_undo(buff);
 
     row = 1;
@@ -394,15 +397,7 @@ void kammerdienerb_go_menu(int n_args, char **args) {
         row += 1;
     }
 
-    /* add yedrc */
-    if (row > 1) {
-        yed_buffer_add_line_no_undo(buff);
-    }
-    bname = "~/.yed/yedrc";
-    for (i = 0; i < strlen(bname); i += 1) {
-        yed_append_to_line_no_undo(buff, row, G(bname[i]));
-    }
-    row += 1;
+    buff->flags |= BUFF_RD_ONLY;
 
     YEXE("special-buffer-prepare-focus", "*go-menu");
     if (ys->active_frame) {

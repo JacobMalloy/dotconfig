@@ -6,7 +6,7 @@ cd $DIR
 
 eval HM=$(echo ~${USER})
 
-
+rm -rf ~/.yed 2>/dev/null
 mkdir -p ~/.yed
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"

@@ -29,3 +29,7 @@ Host argentina
     Hostname argentina.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host uruguay
+    Hostname uruguay.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes

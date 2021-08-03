@@ -44,3 +44,11 @@ Thumbs.db
 .yed/
 .yedrc
 tags
+
+# Rip GREP #
+######################
+.rgignore
+
+# cscope #
+######################
+cscope*

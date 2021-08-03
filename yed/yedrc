@@ -35,6 +35,7 @@ plugin-load 'lang/conf'
 plugin-load 'lang/simon'
 plugin-load 'lang/slide'
 plugin-load 'line_numbers'
+plugin-load 'calc'
 
 ### Zach's Personal Plugins ###
 plugin-load 'find_bracket'

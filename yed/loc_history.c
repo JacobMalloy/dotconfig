@@ -11,6 +11,8 @@ typedef struct loc_data{
 use_tree(yedrc_path_t, loc_data_t);
 #undef inline
 
+#define SAVE_LOCATION "./.location.yed"
+
 void init_loc_history(yed_event *event);
 void set_start_loc_from_history(yed_event *event);
 void update_loc_history(yed_event *event);
@@ -49,23 +51,10 @@ int yed_plugin_boot(yed_plugin *self) {
 
 void init_loc_history(yed_event *event) {
     char line[512];
-    char str[512];
-    char app[512];
-
-    strcpy(app, "/my_loc_history.txt");
-
-    if (!ys->options.no_init) {
-        if (ys->options.init) {
-            abs_path(ys->options.init, str);
-        } else {
-            abs_path("~/.yed", str);
-        }
-        strcat(str, app);
-    }
 
     FILE *fp;
 
-    fp = fopen (str, "r");
+    fp = fopen (SAVE_LOCATION, "r");
     if (fp == NULL) {
         return;
     }
@@ -144,23 +133,9 @@ void update_loc_history(yed_event *event) {
 }
 
 void write_back_loc_history(yed_event *event) {
-    char str[512];
-    char app[512];
-
-    strcpy(app, "/my_loc_history.txt");
-
-    if (!ys->options.no_init) {
-        if (ys->options.init) {
-            abs_path(ys->options.init, str);
-        } else {
-            abs_path("~/.yed", str);
-        }
-        strcat(str, app);
-    }
-
     FILE *fp;
 
-    fp = fopen (str, "w+");
+    fp = fopen (SAVE_LOCATION, "w+");
     if (fp == NULL) {
         return;
     }

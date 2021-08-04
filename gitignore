@@ -44,6 +44,7 @@ Thumbs.db
 .yed/
 .yedrc
 tags
+.location.yed
 
 # Rip GREP #
 ######################

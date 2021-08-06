@@ -24,7 +24,7 @@ ln -sf $DIR/tmux.conf $HOME/.tmux.conf
 echo "install zsh"
 mkdir -p $HOME/.config/zsh
 
-ln -sf $DIR/config/zsh/.zshrc $HOME/.config/zsh/.zshrc
+ln -sf $DIR/config/zsh/zshrc $HOME/.config/zsh/.zshrc
 ln -sf $DIR/zshenv $HOME/.zshenv
 
 

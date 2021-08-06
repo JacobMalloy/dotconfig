@@ -11,4 +11,5 @@ Transparency=off
 CursorType=line
 Term=xterm-256color
 BoldAsFont=yes
-BoldAsColour=no
+BoldAsColour=yes
+AllowBlinking=no

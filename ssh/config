@@ -1,3 +1,5 @@
+HOST *
+    AddKeysToAgent YES
 Host linux
     Hostname 192.168.86.110
     User sjakem

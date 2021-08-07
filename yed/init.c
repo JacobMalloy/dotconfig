@@ -73,7 +73,7 @@ int yed_plugin_boot(yed_plugin *self) {
     if (file_exists_in_PATH("rg")) {
         yed_log("init.c: found an rg executable");
         YEXE("set", "grep-prg",      "rg --vimgrep '%' | sort");
-        YEXE("set", "find-file-prg", "rg --files | rg '(^[^/]*%)|(/[^/]*%[^/]*$)' | sort");
+        YEXE("set", "find-file-prg", "rg --files | rg -i '(^[^/]*%)|(/[^/]*%[^/]*$)' | sort");
     } else if (file_exists_in_PATH("fzf")) {
         yed_log("init.c: found a fzf executable");
         YEXE("set", "find-file-prg", "fzf --filter='%'");

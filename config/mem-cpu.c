@@ -2,8 +2,10 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
-#define SLEEP_TIME 10000000
+#define SLEEP_TIME 10000
+#define BAR_WIDTH 10
 
 struct data{
     union{
@@ -15,6 +17,25 @@ struct data{
 double percentage(struct data d){
     return 100*(1-(1.0*d.idle/d.total));
 }
+
+void getMemRatio(char *c,struct data d){
+    sprintf(c,"%.1lf/%.1fG",1.0*d.free/0x100000,1.0*d.total/0x100000);
+}
+
+void getCpuUsageBar(char *c,struct data d){
+    char temp[25];
+    strcpy(c,"[");
+    uint32_t bars = d.idle*BAR_WIDTH/d.total;
+    for(uint32_t i =0;i<BAR_WIDTH-bars;i++){
+        strcat(c,"#");
+    }
+    for(uint32_t i =0;i<bars;i++){
+        strcat(c," ");
+    }
+    snprintf(temp,25,"] %.2lf%%",percentage(d));
+    strcat(c,temp);
+}
+
 
 #if __linux__
 
@@ -64,13 +85,24 @@ struct data get_cpu(){
     return returnValue;
 }
 
+void loadAvg(char * c){
+    double values[3];
+    getloadavg(values,3);
+    sprintf(c,"%.2lf %.2lf %.2lf",values[0],values[1],values[2]);
+}
+
 #endif
 
 int main(int argc, char* argv[]){
+    char string[250];
+    char barGraph[250];
+    char load[250];
     struct data cpu,mem;
     cpu = get_cpu();
     mem = get_mem();
-    printf("Total:%lu - Idle:%lu\nPercent used %lf\n\n",cpu.total,cpu.free,percentage(cpu));
-    printf("Total:%lu - Free:%lu\nPercent used %lf\n\n",mem.total,mem.free,percentage(mem));
+    loadAvg(load);
+    getMemRatio(string,mem);
+    getCpuUsageBar(barGraph,cpu);
+    printf("%s %s %s\n",string,barGraph,load);
     return 0;
 }

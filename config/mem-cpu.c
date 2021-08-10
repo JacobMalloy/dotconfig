@@ -3,15 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define SLEEP_TIME 10000
-
-struct memory{
-    uint64_t total,free;
-};
-
-struct cpu{
-    uint64_t idle,total;
-};
+#define SLEEP_TIME 10000000
 
 struct data{
     union{
@@ -20,14 +12,18 @@ struct data{
     uint64_t total;
 };
 
+double percentage(struct data d){
+    return 100*(1-(1.0*d.idle/d.total));
+}
+
 #if __linux__
 
 struct cpu_internal{
   uint64_t user,nice,system,idle,iowait,irq,softirq;
 };
 
-struct memory get_mem(){
-    struct memory returnValue;
+struct data get_mem(){
+    struct data returnValue;
     FILE *fd = fopen("/proc/meminfo","r");
     if(NULL==fd){
         fprintf(stderr,"Failed to open /proc/meminfo\n");
@@ -45,14 +41,14 @@ struct cpu_internal get_cpu_internal(){
         fprintf(stderr,"Failed to open /proc/stat\n");
         exit(-1);
     }
-    fscanf(cpuFd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq);
+    fscanf(fd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.iowait,&returnValue.irq,&returnValue.softirq);
     fclose(fd);
     return returnValue;
 }
 
-struct cpu get_cpu(){
+struct data get_cpu(){
     struct cpu_internal cpu_new,cpu_old,cpu_diff;
-    struct cpu returnValue;
+    struct data returnValue;
     cpu_old = get_cpu_internal();
     usleep(SLEEP_TIME);
     cpu_new = get_cpu_internal();
@@ -71,18 +67,10 @@ struct cpu get_cpu(){
 #endif
 
 int main(int argc, char* argv[]){
-    struct memory currentMemory;
-    struct cpu cpu_old;
-    struct cpu cpu_new;
-    uint64_t total;
-    double percentUsed;
-    FILE *fd = fopen("/proc/stat","r");
-    if(fd==NULL){
-        fprintf(stderr,"Failed to open meminfo\n");
-        return -1;
-    }
-    fscanf(cpuFd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&cpu_old.user,&cpu_old.nice,&cpu_old.system,&cpu_old.idle,&cpu_old.idle,&cpu_old.iowait,&cpu_old.irq,&cpu_old.softirq);
-    printf("Total:%lu - Free:%lu\nPercent used %lf\n",currentMemory.total,currentMemory.free,percentUsed);
-    printf("Total:%lu - Free:%lu\nPercent used %lf\n",total,cpu_new.idle,percentUsed);
+    struct data cpu,mem;
+    cpu = get_cpu();
+    mem = get_mem();
+    printf("Total:%lu - Idle:%lu\nPercent used %lf\n\n",cpu.total,cpu.free,percentage(cpu));
+    printf("Total:%lu - Free:%lu\nPercent used %lf\n\n",mem.total,mem.free,percentage(mem));
     return 0;
 }

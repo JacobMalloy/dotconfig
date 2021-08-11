@@ -1,4 +1,6 @@
 #!/bin/bash
+CC=gcc
+CCFlags= -O3 -march=native -mtune=native
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 
@@ -18,7 +20,7 @@ ln -sf $DIR/gitconfig $HOME/.gitconfig
 ln -sf $DIR/gitignore $HOME/.gitignore
 
 echo "install tmux conf"
-
+$CC $CCFlags $DIR/config/mem-cpu.c -o $HOME/.config/jacob-performance
 ln -sf $DIR/tmux.conf $HOME/.tmux.conf
 
 echo "install zsh"

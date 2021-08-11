@@ -19,20 +19,22 @@ double percentage(struct data d){
 }
 
 void getMemRatio(char *c,struct data d){
-    sprintf(c,"%.1lf/%.1fG",1.0*d.free/0x100000,1.0*d.total/0x100000);
+    sprintf(c,"%.1lf/%.1fG",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
 }
 
 void getCpuUsageBar(char *c,struct data d){
     char temp[25];
     strcpy(c,"[");
-    uint32_t bars = d.idle*BAR_WIDTH/d.total;
-    for(uint32_t i =0;i<BAR_WIDTH-bars;i++){
-        strcat(c,"#");
+    uint32_t bars = (d.total-d.idle)*BAR_WIDTH/d.total;
+    for(uint32_t i =0;i<BAR_WIDTH;i++){
+        if (i<bars){
+            strcat(c,"|");
+        }else{
+            strcat(c," ");
+        }
+
     }
-    for(uint32_t i =0;i<bars;i++){
-        strcat(c," ");
-    }
-    snprintf(temp,25,"] %.2lf%%",percentage(d));
+    snprintf(temp,25,"] %3.2lf%%",percentage(d));
     strcat(c,temp);
 }
 
@@ -40,7 +42,7 @@ void getCpuUsageBar(char *c,struct data d){
 #if __linux__
 
 struct cpu_internal{
-  uint64_t user,nice,system,idle,iowait,irq,softirq;
+  int64_t user,nice,system,idle,iowait,irq,softirq;
 };
 
 struct data get_mem(){
@@ -62,7 +64,7 @@ struct cpu_internal get_cpu_internal(){
         fprintf(stderr,"Failed to open /proc/stat\n");
         exit(-1);
     }
-    fscanf(fd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.iowait,&returnValue.irq,&returnValue.softirq);
+    fscanf(fd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq);
     fclose(fd);
     return returnValue;
 }
@@ -103,6 +105,6 @@ int main(int argc, char* argv[]){
     loadAvg(load);
     getMemRatio(string,mem);
     getCpuUsageBar(barGraph,cpu);
-    printf("%s %s %s\n",string,barGraph,load);
+    printf("%s %s %s",string,barGraph,load);
     return 0;
 }

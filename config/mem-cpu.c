@@ -20,7 +20,7 @@ double percentage(struct data d){
 
 void getMemRatio(char *c,struct data d){
     //fprintf(stderr,"%lu - %lu\n",d.free,d.total);
-    sprintf(c,"%.1lf/%.1fG",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
+    sprintf(c,"\033[91m%.1lf/%.1fG\033[0m",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
 }
 
 void getCpuUsageBar(char *c,struct data d){

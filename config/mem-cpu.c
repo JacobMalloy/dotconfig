@@ -7,6 +7,12 @@
 #define SLEEP_TIME 10000
 #define BAR_WIDTH 10
 
+#define LOW_BOUNDRY 50
+#define HIGH_BOUNDRY 90
+#define LOW_COLOR "1;32"
+#define MEDIUM_COLOR "1;33"
+#define HIGH_COLOR "1;31"
+
 struct data{
     union{
         uint64_t idle,free;
@@ -20,7 +26,15 @@ double percentage(struct data d){
 
 void getMemRatio(char *c,struct data d){
     //fprintf(stderr,"%lu - %lu\n",d.free,d.total);
-    sprintf(c,"\033[91m%.1lf/%.1fG\033[0m",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
+    uint64_t percent = d.idle*100/d.total;
+    char * color;
+    if(percent<50)
+        color = LOW_COLOR;
+    else if(percent>=90)
+        color = HIGH_COLOR;
+    else
+        color = MEDIUM_COLOR;
+    sprintf(c,"\033[%sm%.1lf/%.1fG\033[0m",color,1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
 }
 
 void getCpuUsageBar(char *c,struct data d){

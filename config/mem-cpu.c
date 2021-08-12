@@ -19,6 +19,7 @@ double percentage(struct data d){
 }
 
 void getMemRatio(char *c,struct data d){
+    //fprintf(stderr,"%lu - %lu\n",d.free,d.total);
     sprintf(c,"%.1lf/%.1fG",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
 }
 
@@ -47,12 +48,17 @@ struct cpu_internal{
 
 struct data get_mem(){
     struct data returnValue;
+    size_t trash;
     FILE *fd = fopen("/proc/meminfo","r");
+    fseek(fd,0,SEEK_SET);
     if(NULL==fd){
         fprintf(stderr,"Failed to open /proc/meminfo\n");
         exit(-1);
     }
-    fscanf(fd,"MemTotal: %lu kB\nMemFree: %lu kB",&returnValue.total,&returnValue.free);
+    if(fscanf(fd,"MemTotal: %llu kB \n MemFree: %llu kB",&returnValue.total,&returnValue.free)!=2){
+        fprintf(stderr,"Read the incorrect amount from /proc/meminfo");
+        exit(-1);
+    }
     fclose(fd);
     return returnValue;
 }
@@ -60,13 +66,21 @@ struct data get_mem(){
 struct cpu_internal get_cpu_internal(){
     struct cpu_internal returnValue;
     FILE *fd = fopen("/proc/stat","r");
+    fseek(fd,0,SEEK_SET);
     if(NULL==fd){
         fprintf(stderr,"Failed to open /proc/stat\n");
         exit(-1);
     }
-    fscanf(fd,"cpu  %lu %lu %lu %lu %lu %lu %lu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq);
+    if(fscanf(fd,"cpu  %llu %llu %llu %llu %llu %llu %llu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq)!=7){
+        fprintf(stderr,"failed to read 7 from /proc/stat\n");
+        exit(-1);
+    }
     fclose(fd);
     return returnValue;
+}
+
+void print_cpu(struct cpu_internal *t){
+    //fprintf(stderr,"%ld %ld %ld %ld %ld %ld %ld\n",t->user,t->nice,t->system,t->idle,t->iowait,t->irq,t->softirq);
 }
 
 struct data get_cpu(){
@@ -82,6 +96,9 @@ struct data get_cpu(){
     cpu_diff.iowait = cpu_new.iowait-cpu_old.iowait;
     cpu_diff.irq = cpu_new.irq-cpu_old.irq;
     cpu_diff.softirq = cpu_new.softirq-cpu_old.softirq;
+    print_cpu(&cpu_old);
+    print_cpu(&cpu_new);
+    print_cpu(&cpu_diff);
     returnValue.total = cpu_diff.user+cpu_diff.nice+cpu_diff.system+cpu_diff.idle+cpu_diff.iowait+cpu_diff.irq+cpu_diff.softirq;
     returnValue.idle = cpu_diff.iowait+cpu_diff.idle;
     return returnValue;
@@ -100,6 +117,7 @@ int main(int argc, char* argv[]){
     char barGraph[250];
     char load[250];
     struct data cpu,mem;
+
     cpu = get_cpu();
     mem = get_mem();
     loadAvg(load);

@@ -39,6 +39,12 @@ void getCpuUsageBar(char *c,struct data d){
     strcat(c,temp);
 }
 
+void loadAvg(char * c){
+    double values[3];
+    getloadavg(values,3);
+    sprintf(c,"%.2lf %.2lf %.2lf",values[0],values[1],values[2]);
+}
+
 
 #if __linux__
 
@@ -104,13 +110,19 @@ struct data get_cpu(){
     return returnValue;
 }
 
-void loadAvg(char * c){
-    double values[3];
-    getloadavg(values,3);
-    sprintf(c,"%.2lf %.2lf %.2lf",values[0],values[1],values[2]);
+#else //end of __linux__
+struct data get_cpu(){
+    fprintf(stderr,"This platform is not supported\n");
+    exit(-1);
 }
 
-#endif
+struct data get_mem(){
+    fprintf(stderr,"This platform is not supported\n");
+    exit(-1);
+}
+
+#endif //all other platforms
+
 
 int main(int argc, char* argv[]){
     char string[250];

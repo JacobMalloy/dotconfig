@@ -1,4 +1,4 @@
-alias sudo='sudo '
+alias sudo='sudo -E '
 alias build-hotspot='(cd $my_jdk && make hotspot)'
 alias ls="/bin/ls -CF --color=always"
 alias ll="ls -la"

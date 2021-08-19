@@ -1,6 +1,6 @@
 #!/bin/bash
 CC=gcc
-CCFlags= -O3 -march=native -mtune=native
+CCFlags="-O3 -march=native -mtune=native"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 

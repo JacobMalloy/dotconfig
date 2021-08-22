@@ -7,10 +7,13 @@ OPTO=       -g -O0
 #OPTO=       -O3 -march=native -mtune=native
 
 
-all:        main
+all:main
 
-main:    main.c
-    $(CC) $(CCFLAGS) $^ -o $@
+main:main.cpp
+	$(CXX) $(CXXFLAGS) $(OPTO) $^ -o $@
 
 clean:
-    rm -f *.o main
+	rm -f *.o main.cpp
+
+test:     all
+	echo "put gradescript here"

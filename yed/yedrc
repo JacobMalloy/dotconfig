@@ -1,6 +1,6 @@
 ###############################################################################
 #     yedrc
-#     Zach McMichael
+#     Jacob Malloy
 ###############################################################################
 
 ### @plugins ###
@@ -73,6 +73,8 @@ plugin-load 'macro'
 #plugin-load 'chatty_kathy'
 
 ### @variables ###
+set completer-auto                NO
+set completer-popup               YES
 set tab-width                     4
 set latex-comp-prg                "xelatex -halt-on-error --interaction=nonstopmode '%'"
 set latex-view-prg                "echo \"zathura '%'\" | $SHELL &"

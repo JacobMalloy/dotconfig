@@ -1,6 +1,5 @@
 #include <yed/plugin.h>
 
-#define inline static inline
 #include <yed/tree.h>
 typedef char *yedrc_path_t;
 typedef struct loc_data{
@@ -8,8 +7,7 @@ typedef struct loc_data{
     int col;
     int can_update;
 }loc_data_t;
-use_tree(yedrc_path_t, loc_data_t);
-#undef inline
+use_tree_c(yedrc_path_t, loc_data_t, strcmp);
 
 #define SAVE_LOCATION "./.location.yed"
 
@@ -28,7 +26,7 @@ int yed_plugin_boot(yed_plugin *self) {
     YED_PLUG_VERSION_CHECK();
 
     yed_plugin_set_unload_fn(self, unload);
-    hist = tree_make_c(yedrc_path_t, loc_data_t, strcmp);
+    hist = tree_make(yedrc_path_t, loc_data_t);
 
     h1.kind = EVENT_BUFFER_PRE_LOAD;
     h1.fn   = init_loc_history;

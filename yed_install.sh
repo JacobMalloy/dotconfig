@@ -10,10 +10,9 @@ rm -rf ~/.yed 2>/dev/null
 mkdir -p ~/.yed
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
-C_FLAGS="-O3 -shared -fPIC -Wall -Werror"
+C_FLAGS="-O3 -march=native -mtune=native -shared -fPIC -Wall -Werror $(yed --print-cflags)"
 CC=gcc
-
-C_FLAGS+=" -I$(yed --print-include-dir) -L$(yed --print-lib-dir) -lyed"
+LD_FLAGS="$(yed --print-ldflags)"
 
 
 YED_DIR=${DIR}/yed
@@ -27,7 +26,7 @@ for f in $(find ${DIR}/yed -name "*.c"); do
     PLUG_FULL_PATH=${PLUG_DIR}/$(basename $f ".c").so
 
     mkdir -p ${PLUG_DIR}
-    ${CC} ${f} ${C_FLAGS} -o ${PLUG_FULL_PATH} &
+    ${CC} ${f} ${C_FLAGS} ${LD_FLAGS} -o ${PLUG_FULL_PATH} &
     pids+=($!)
 done
 

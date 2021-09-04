@@ -10,7 +10,7 @@ rm -rf ~/.yed 2>/dev/null
 mkdir -p ~/.yed
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
-C_FLAGS="-O3 -march=native -mtune=native -shared -fPIC -Wall -Werror $(yed --print-cflags)"
+C_FLAGS="-O2 -march=native -mtune=native -shared -fPIC -Wall -Werror $(yed --print-cflags)"
 CC=gcc
 LD_FLAGS="$(yed --print-ldflags)"
 

@@ -16,13 +16,14 @@ LD_FLAGS="$(yed --print-ldflags)"
 
 
 YED_DIR=${DIR}/yed
+YED_PLUGIN_DIR=${YED_DIR}/plugins
 HOME_YED_DIR=${HM}/.yed
 
 pids=()
 
-for f in $(find ${DIR}/yed -name "*.c"); do
-    echo "Compiling ${f/${YED_DIR}/.yed} and installing."
-    PLUG_DIR=$(dirname ${f/${YED_DIR}/${HOME_YED_DIR}})
+for f in $(find ${YED_PLUGIN_DIR} -name "*.c"); do
+    echo "Compiling ${f/${YED_PLUUGIN_DIR}/.yed} and installing."
+    PLUG_DIR=$(dirname ${f/${YED_PLUGIN_DIR}/${HOME_YED_DIR}})
     PLUG_FULL_PATH=${PLUG_DIR}/$(basename $f ".c").so
 
     mkdir -p ${PLUG_DIR}

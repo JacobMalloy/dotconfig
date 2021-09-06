@@ -35,3 +35,6 @@ Host uruguay
     Hostname uruguay.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host desktop
+    Hostname 10.6.0.5
+    User sjake

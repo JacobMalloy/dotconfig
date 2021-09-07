@@ -89,11 +89,20 @@ void print_cpu(struct cpu_internal *t){
     //fprintf(stderr,"%ld %ld %ld %ld %ld %ld %ld\n",t->user,t->nice,t->system,t->idle,t->iowait,t->irq,t->softirq);
 }
 
-struct data get_cpu(){
+struct data get_cpu(char *filename){
     struct cpu_internal cpu_new,cpu_old,cpu_diff;
     struct data returnValue;
-    cpu_old = get_cpu_internal();
-    usleep(SLEEP_TIME);
+    FILE *fd;
+    fd = fopen(filename,"rb");
+    if(fd==NULL){
+        memset(&cpu_old,0,sizeof(cpu_old));
+    }else{
+        if(fread(&cpu_old,sizeof(cpu_old),1,fd)!=1){
+            fprintf(stderr,"failed to open %s\n",filename);
+            exit(-1);
+        }
+        fclose(fd);
+    }
     cpu_new = get_cpu_internal();
     cpu_diff.user = cpu_new.user-cpu_old.user;
     cpu_diff.nice = cpu_new.nice-cpu_old.nice;
@@ -107,11 +116,21 @@ struct data get_cpu(){
     print_cpu(&cpu_diff);
     returnValue.total = cpu_diff.user+cpu_diff.nice+cpu_diff.system+cpu_diff.idle+cpu_diff.iowait+cpu_diff.irq+cpu_diff.softirq;
     returnValue.idle = cpu_diff.iowait+cpu_diff.idle;
+    fd=fopen(filename,"wb+");
+    if(fd==NULL){
+        fprintf(stderr,"failed to open %s for writing\n",filename);
+        exit(-1);
+    }
+    if(fwrite(&cpu_new,sizeof(cpu_new),1,fd)!=1){
+        fprintf(stderr,"failed to write to %s",filename);
+        exit(-1);
+    }
+    fclose(fd);
     return returnValue;
 }
 
 #else //end of __linux__
-struct data get_cpu(){
+struct data get_cpu(char * filename){
     fprintf(stderr,"This platform is not supported\n");
     exit(-1);
 }
@@ -128,9 +147,20 @@ int main(int argc, char* argv[]){
     char string[250];
     char barGraph[250];
     char load[250];
+    char filename[250];
     struct data cpu,mem;
 
-    cpu = get_cpu();
+    if(argc!=2){
+        fprintf(stderr,"please enter an argument for the filename");
+        exit(-1);
+    }
+
+    if(snprintf(filename,250,"/tmp/tmux-perf-%s.txt",argv[1])==-1){
+        fprintf(stderr,"Name value given too long");
+        exit(-1);
+    }
+
+    cpu = get_cpu(filename);
     mem = get_mem();
     loadAvg(load);
     getMemRatio(string,mem);

@@ -41,11 +41,5 @@ scroll_buffer
 shell_run
 status_bar_clock
 style_pack
-style_picker
-styles/acme
-styles/blue
-styles/bold
-styles/book
-styles/casey
 vimish
 yedrc

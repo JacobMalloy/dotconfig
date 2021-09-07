@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+./yed/yed/install.sh -p ~/.local
+
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd $DIR
@@ -37,5 +39,6 @@ done
 
 echo "Moving yedrc."
 ln -sf ${YED_DIR}/yedrc ${HOME_YED_DIR}
+ln -sf ${YED_DIR}/ypm_list ${HOME_YED_DIR}
 ln -sf ${YED_DIR}/templates ${HOME_YED_DIR}
 echo "Done."

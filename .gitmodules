@@ -1,0 +1,3 @@
+[submodule "yed/yed"]
+	path = yed/yed
+	url = git@github.com:kammerdienerb/yed

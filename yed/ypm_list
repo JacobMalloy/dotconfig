@@ -43,3 +43,5 @@ status_bar_clock
 style_pack
 vimish
 yedrc
+auto_paren
+loc_history

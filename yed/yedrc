@@ -23,8 +23,6 @@ plugin-load 'ypm'
 #    lazy-plug-ft ".si"    'lang/simon'
 
 
-plugin-load 'loc_history'
-plugin-load 'auto_paren'
 plugin-load 'styles/casey'
 
 ### @variables ###

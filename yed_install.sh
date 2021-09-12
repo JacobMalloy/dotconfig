@@ -39,5 +39,5 @@ done
 echo "Moving yedrc."
 ln -f ${YED_DIR}/yedrc ${HOME_YED_DIR}
 ln -f ${YED_DIR}/ypm_list ${HOME_YED_DIR}
-ln -f ${YED_DIR}/templates ${HOME_YED_DIR}
+ln -sf ${YED_DIR}/templates ${HOME_YED_DIR}
 echo "Done."

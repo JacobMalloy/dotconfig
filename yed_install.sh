@@ -18,7 +18,7 @@ LD_FLAGS="$(yed --print-ldflags)"
 
 YED_DIR=${DIR}/yed
 YED_PLUGIN_DIR=${YED_DIR}/plugins
-HOME_YED_DIR=${HM}/.yed
+HOME_YED_DIR=$(yed --print-config-dir)
 
 pids=()
 

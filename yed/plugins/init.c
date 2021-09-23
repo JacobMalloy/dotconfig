@@ -32,6 +32,7 @@ int yed_plugin_boot(yed_plugin *self) {
     yed_event_handler  go_menu_key;
     char              *term;
     char              *env_style;
+    char              *path;
 
     YED_PLUG_VERSION_CHECK();
 
@@ -57,7 +58,7 @@ int yed_plugin_boot(yed_plugin *self) {
     yed_plugin_set_command(self, "go-menu", kammerdienerb_go_menu);
     yed_plugin_set_command(self, "kammerdienerb-find-cursor-word", kammerdienerb_find_cursor_word);
 
-    YEXE("plugin-load", "yedrc");
+    YEXE("plugin-load", "ypm");
 
     /*
      * Set things that need to be dynamic,
@@ -85,7 +86,9 @@ int yed_plugin_boot(yed_plugin *self) {
     }
 
     /* Load my yedrc file. */
-    YEXE("yedrc-load", "~/.yed/yedrc");
+    path = get_config_item_path("yedrc");
+    YEXE("yedrc-load", path);
+    free(path);
 
     /* Load style via environment var if set. */
     if ((term = getenv("TERM"))

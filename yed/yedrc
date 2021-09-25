@@ -4,7 +4,6 @@
 ###############################################################################
 
 ### @plugins ###
-plugin-load 'ypm'
 # 'yedrc' is already loaded by init.c
 # That's how we're loading this file.
 

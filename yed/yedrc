@@ -25,8 +25,8 @@
 plugin-load 'styles/casey'
 
 ### @variables ###
-set completer-auto                NO
-set completer-popup               YES
+set completer-auto                "yes"
+set completer-popup               "yes"
 set tab-width                     4
 set latex-comp-prg                "xelatex -halt-on-error --interaction=nonstopmode '%'"
 set latex-view-prg                "echo \"zathura '%'\" | $SHELL &"
@@ -38,6 +38,7 @@ set builder-popup-rg              "yes"
 # ctags disabled by default -- enable per project
 # (should also set 'ctags-flags' and 'ctags-enable-extra-highlighting' if desired)
 set use-ctags "no"
+set ctags-compl "yes"
 #set chatty-kathy-id                 "mickidymick"
 #set chatty-kathy-port               2324
 #set chatty-kathy-server             "com1635.eecs.utk.edu"

@@ -25,7 +25,7 @@
 plugin-load 'styles/casey'
 
 ### @variables ###
-set completer-auto                "yes"
+set completer-auto                "no"
 set completer-popup               "yes"
 set tab-width                     4
 set latex-comp-prg                "xelatex -halt-on-error --interaction=nonstopmode '%'"

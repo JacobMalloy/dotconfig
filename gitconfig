@@ -5,4 +5,4 @@
 	excludesfile = ~/.gitignore#$HOME/.gitignore
 	editor = vim
 [pull]
-	ff = only
+	rebase = true

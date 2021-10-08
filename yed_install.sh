@@ -8,8 +8,6 @@ cd $DIR
 
 eval HM=$(echo ~${USER})
 
-mkdir -p ~/.yed
-
 # YED_INSTALLATION_PREFIX="${HM}/.local"
 C_FLAGS="-O2 -march=native -mtune=native -shared -fPIC -Wall -Werror $(yed --print-cflags)"
 CC=gcc

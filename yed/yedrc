@@ -91,7 +91,9 @@ hook post-write                 \
             "ctags-gen"         \
             "ctags-hl-reparse"'
 
-set status-line-left              "%f %b"
+plugin-load git_variables
+
+set status-line-left              "%(git-variables-branch)%f %b"
 set status-line-right             "%t %l:%c "
 set status-line-center            "%(vimish-mode)"
 

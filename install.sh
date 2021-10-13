@@ -27,6 +27,9 @@ mkdir -p $HOME/.config/zsh
 ln -f $DIR/config/zsh/zshrc $HOME/.config/zsh/.zshrc
 ln -f $DIR/zshenv $HOME/.zshenv
 
+echo "install bashrc"
+ln -f $DIR/bashrc $HOME/.bashrc
+
 
 echo "install ssh"
 mkdir -p $HOME/.ssh

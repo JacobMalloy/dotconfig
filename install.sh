@@ -42,4 +42,8 @@ chmod 644 ~/.ssh/config
 ln -f $DIR/ssh/rc $HOME/.ssh/rc
 chmod 644 ~/.ssh/rc
 
+echo "installing kitty"
+mkdir -p $HOME/.config/kitty
+ln -sf $DIR/config/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+
 ./yed_install.sh

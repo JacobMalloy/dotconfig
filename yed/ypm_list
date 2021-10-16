@@ -45,3 +45,4 @@ yedrc
 auto_paren
 loc_history
 styles/crunchy_leaves
+style_use_term_bg

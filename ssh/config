@@ -42,3 +42,7 @@ Host com
     Hostname com1642.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host chile
+    Hostname chile.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes

@@ -93,10 +93,10 @@ hook post-write                 \
 
 plugin-load git_variables
 
-set git-variables-branch-icon     " "
+set git-variables-branch-icon     ": "
 
-set status-line-left              " %[fg eeeade]%(git-variables-branch)%[]%f %b"
-set status-line-right             "%t %l:%c "
+set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
+set status-line-right             "%[fg eeeade]%(builder-status) %[]%t %l:%c "
 set status-line-center            "%(vimish-mode)"
 
 

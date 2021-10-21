@@ -1,5 +1,6 @@
 HOST *
     AddKeysToAgent YES
+    Compression yes
 Host linux
     Hostname 192.168.86.110
     User sjakem

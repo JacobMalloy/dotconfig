@@ -150,6 +150,10 @@ int main(int argc, char* argv[]){
     char filename[250];
     struct data cpu,mem;
 
+    #if __APPLE__
+    return 0;
+    #endif
+
     if(argc!=2){
         fprintf(stderr,"please enter an argument for the filename");
         exit(-1);

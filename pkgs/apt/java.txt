@@ -1,0 +1,13 @@
+build-essential
+libfreetype6-dev
+libcups2-dev
+libx11-dev
+libxext-dev
+libxrender-dev
+libxrandr-dev
+libxtst-dev
+libxt-dev
+libasound2-dev
+libffi-dev
+autoconf
+make

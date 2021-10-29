@@ -1,0 +1,15 @@
+autoconf
+bc
+bison
+build-devel
+cpio
+fakeroot
+flex
+git
+inetutils
+kmod
+libelf
+perl
+tar
+xmlto
+xz

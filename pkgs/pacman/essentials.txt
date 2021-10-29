@@ -1,0 +1,17 @@
+base-devel
+clang
+cmake
+ctags
+gdb
+git
+make
+man-db
+python3
+python-pip
+python-virtualenv
+ripgrep
+sudo
+tmux
+vim
+wget
+zsh

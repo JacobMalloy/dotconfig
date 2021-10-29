@@ -1,0 +1,16 @@
+htop
+gnu-time
+cmake
+tree
+cask
+google-chrome
+visual-studio-code
+kitty
+ripgrep
+vim
+tmux
+zoom
+spotify
+microsoft-word
+microsoft-excel
+microsoft-powerpoint

@@ -7,7 +7,6 @@ builder
 calc
 comment
 completer
-ctags
 cursor_word_hl
 find_bracket
 find_file
@@ -47,3 +46,4 @@ loc_history
 styles/crunchy_leaves
 style_use_term_bg
 go_menu
+ctags

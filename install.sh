@@ -3,6 +3,29 @@ CC=gcc
 CCFlags="-O3 -march=native -mtune=native"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+YED="yes"
+YED_CORE_COMMAND="--core-install"
+YED_YPM_UPDATE="--ypm-update"
+
+for var in "$@"
+do
+    case "$var" in
+    "--no-yed")
+    YED="no"
+    ;;
+    "--no-yed-core")
+    YED_CORE_COMMAND=""
+    ;;
+    "--no-ypm-update")
+    YED_YPM_UPDATE=""
+    ;;
+    *)
+    printf "options are:\n--no-yed\n--no-yed-core\n--no-ypm-update\n"
+    exit 1
+    ;;
+    esac
+done
+
 
 echo "installing aliases"
 
@@ -52,4 +75,7 @@ echo "installing kitty"
 mkdir -p $HOME/.config/kitty
 ln -sf $DIR/config/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
-./yed_install.sh
+
+if [ "${yed}" != "no" ]; then
+    ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE
+fi

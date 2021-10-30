@@ -11,3 +11,4 @@ libasound2-dev
 libffi-dev
 autoconf
 make
+libfontconfig1-dev

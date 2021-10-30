@@ -1,0 +1,9 @@
+discord
+google-chrome
+kitty
+microsoft-excel
+microsoft-powerpoint
+microsoft-word
+spotify
+visual-studio-code
+zoom

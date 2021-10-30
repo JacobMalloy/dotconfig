@@ -11,10 +11,10 @@ if [ $# -eq 0 ]; then
 fi
 
 
-YUM_CMD=$(which yum) > /dev/null 2>&1
-APT_CMD=$(which apt) > /dev/null 2>&1
-BREW_CMD=$(which brew) > /dev/null 2>&1
-PACMAN_CMD=$(which pacman) > /dev/null 2>&1
+YUM_CMD=$(which yum 2>/dev/null)
+APT_CMD=$(which apt 2>/dev/null)
+BREW_CMD=$(which brew 2>/dev/null)
+PACMAN_CMD=$(which pacman 2>/dev/null)
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

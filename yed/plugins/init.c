@@ -5,6 +5,8 @@ void kammerdienerb_write_quit(int n_args, char **args);
 void kammerdienerb_find_cursor_word(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
 void jacobmalloy_frame_command_handler(yed_event *event);
+void jacobmalloy_ypm_update_quit(int argc, char **argv);
+void jacobmalloy_ypm_update_quit_pump(int argc, char **argv);
 
 int go_menu_stay;
 static yed_plugin *global_self;
@@ -45,6 +47,7 @@ int yed_plugin_boot(yed_plugin *self) {
     get_or_make_buffer(ARGS_SCRATCH_BUFF);
 
     yed_plugin_set_command(self, "jacobmalloy-frame-commands", jacobmalloy_frame_commands);
+    yed_plugin_set_command(self, "jacobmalloy-ypm-update-quit", jacobmalloy_ypm_update_quit);
     yed_plugin_set_command(self, "kammerdienerb-find-cursor-word", kammerdienerb_find_cursor_word);
 
     YEXE("plugin-load", "ypm");
@@ -133,6 +136,20 @@ void jacobmalloy_frame_command_handler(yed_event *event){
     }
     event->cancel=1;
     do_it=0;
+}
+
+void jacobmalloy_ypm_update_quit(int argc, char **argv){
+    yed_event_handler h;
+    h.kind = EVENT_POST_PUMP;
+    h.fn = jacobmalloy_ypm_update_quit_pump;
+    yed_plugin_add_event_handler(global_self,h);
+    YEXE("ypm-update");
+}
+
+void jacobmalloy_ypm_update_quit_pump(int argc, char **argv){
+    if(!yed_var_is_truthy("ypm-is-updating")){
+        YEXE("quit");
+    }
 }
 
 void kammerdienerb_quit(int n_args, char **args) {

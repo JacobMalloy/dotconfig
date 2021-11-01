@@ -10,5 +10,4 @@ kmod
 libelf-dev
 libncurses5-dev
 libssl-dev
-linux-source
 xz-utils

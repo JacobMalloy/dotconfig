@@ -53,3 +53,5 @@ tags
 # cscope #
 ######################
 cscope*
+
+.yed_ctags_*

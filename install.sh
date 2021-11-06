@@ -1,7 +1,13 @@
 #!/bin/bash
 CC=gcc
-CCFlags="-O3 -march=native -mtune=native"
+CCFlags="-O2"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ $(uname) = "Darwin" ]; then
+    if uname -a | grep "arm64" >/dev/null 2>&1; then
+        CCFlags+=" -arch arm64"
+    fi
+fi
 
 YED="yes"
 YED_CORE_COMMAND="--core-install"

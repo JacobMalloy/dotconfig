@@ -35,9 +35,15 @@ if [ $CORE_INSTALL == "yes" ]; then
 fi
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
-C_FLAGS="-O2 -march=native -mtune=native -shared -fPIC -Wall $(yed --print-cflags)"
+C_FLAGS="-O2 -shared -fPIC -Wall $(yed --print-cflags)"
 CC=gcc
 LD_FLAGS="$(yed --print-ldflags)"
+
+if [ $(uname) = "Darwin" ]; then
+	if uname -a | grep "arm64" >/dev/null 2>&1; then	            
+		C_Flags+=" -arch arm64"
+	fi
+fi
 
 
 YED_DIR=${DIR}/yed

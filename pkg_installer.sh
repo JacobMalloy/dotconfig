@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
+
+if [ $(uname) = "Darwin" ]; then
+    BREW_CMD=$(which brew 2>/dev/null)
+else
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
+fi
+YUM_CMD=$(which yum 2>/dev/null)
+APT_CMD=$(which apt 2>/dev/null)
+PACMAN_CMD=$(which pacman 2>/dev/null)
 fi
 
 if [ $# -eq 0 ]; then
     echo "No arguments supplied"
     exit 1
 fi
-
-
-YUM_CMD=$(which yum 2>/dev/null)
-APT_CMD=$(which apt 2>/dev/null)
-BREW_CMD=$(which brew 2>/dev/null)
-PACMAN_CMD=$(which pacman 2>/dev/null)
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

@@ -2,6 +2,10 @@
 __pycache__/
 
 
+# Debug Symbols #
+#################
+*.dSYM/
+
 # Compiled source #
 ###################
 *.com

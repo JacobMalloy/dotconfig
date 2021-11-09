@@ -107,7 +107,7 @@ char *get_sel_text(yed_buffer *buffer) {
 
 int yed_plugin_boot(yed_plugin *self){
     YED_PLUG_VERSION_CHECK();
-    yed_plugin_set_command(self, "copy-to-universal-clipboard", copy_to_clipboard);
+    yed_plugin_set_command(self, "copy-to-universal-clipboard", copy_to_universal_clipboard);
     return 0;
 }
 

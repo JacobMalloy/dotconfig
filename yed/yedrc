@@ -95,6 +95,7 @@ hook post-write                 \
             "ctags-gen"         \
             "ctags-hl-reparse"'
 
+plugin-load universal-clipboard
 plugin-load git_variables
 
 set git-variables-branch-icon     ": "

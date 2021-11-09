@@ -50,7 +50,6 @@ int yed_plugin_boot(yed_plugin *self) {
     yed_plugin_set_command(self, "jacobmalloy-ypm-update-quit", jacobmalloy_ypm_update_quit);
     yed_plugin_set_command(self, "kammerdienerb-find-cursor-word", kammerdienerb_find_cursor_word);
 
-    YEXE("plugin-load", "ypm");
 
     /*
      * Set things that need to be dynamic,
@@ -62,6 +61,8 @@ int yed_plugin_boot(yed_plugin *self) {
     }
 
     YEXE("set", "truecolor", "yes");
+
+    YEXE("plugin-load", "ypm");
 
     if (file_exists_in_PATH("rg")) {
         yed_log("init.c: found an rg executable");

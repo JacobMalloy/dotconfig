@@ -4,6 +4,7 @@ kitty
 microsoft-excel
 microsoft-powerpoint
 microsoft-word
+mos
 rectangle
 spotify
 visual-studio-code

@@ -95,8 +95,8 @@ hook post-write                 \
             "ctags-gen"         \
             "ctags-hl-reparse"'
 
-plugin-load universal-clipboard
-set universal-copy-on-yank
+plugin-load universal_clipboard
+set universal-copy-on-yank "yes"
 
 plugin-load git_variables
 

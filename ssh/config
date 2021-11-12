@@ -47,3 +47,11 @@ Host chile
     Hostname chile.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host italy
+    Hostname italy.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes
+Host india
+    Hostname india.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes

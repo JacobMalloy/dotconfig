@@ -55,4 +55,4 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
     trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
 fi
 
-printf "\033]0;$(cat /proc/sys/kernel/hostname)\007"
+printf "\033]0;${HOST}\007"

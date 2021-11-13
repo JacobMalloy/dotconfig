@@ -1,6 +1,3 @@
-#include<stdio.h>
-#include<stdint.h>
-#include<stdlib.h>
 #include<yed/plugin.h>
 
 static void tab_set_pre_insert_handler(yed_event *event);
@@ -30,6 +27,7 @@ void tab_set_pre_insert_handler(yed_event *event){
         if(event->buffer != NULL && event->frame != NULL){
             tab_width_string = yed_get_var("tab-width");
             if(tab_width_string == NULL || (tab_width=atoi(tab_width_string))==0){
+                yed_cprint("shit %d",atoi(tab_width_string));
                 tab_width=4;
             }
             insert_count = 4-((event->col-1)%tab_width);

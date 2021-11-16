@@ -13,7 +13,7 @@ static yed_plugin *global_self;
 
 static const char b64chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 //code modified from stack overflow post to get the b4 bit encoded verison of a char array
-char *b64_encode(const unsigned char *in, size_t len)
+char *b64_encode(const char *in, size_t len)
 {
     char   *out;
     size_t  elen;

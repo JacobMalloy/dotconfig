@@ -1,6 +1,27 @@
 source $HOME/.config/aliases
 source $HOME/.config/variables
 
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="%F{1}✖"
+    EXIT_CODE_PROMPT+="%F{9}$LAST_EXIT_CODE"
+    EXIT_CODE_PROMPT+="%F{1}✖%f-"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
+preexec() {
+    cmd_start=$(date +%s%N)
+}
+
+precmd() {
+  local cmd_end=$(date +%s%N)
+  local elapsed_time=$((cmd_end-cmd_start))
+  elapsed=$(printf "%.2f" $((elapsed_time*.000000001)))
+}
+
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
@@ -47,6 +68,7 @@ zstyle ':vcs_info:git:*' formats ' %b'
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 
+RPROMPT='$(check_last_exit_code)${elapsed}'
 
 PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 

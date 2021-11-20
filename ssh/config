@@ -55,3 +55,7 @@ Host india
     Hostname india.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host ecuador
+    Hostname ecuador.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes

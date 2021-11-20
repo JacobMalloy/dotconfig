@@ -1,26 +1,6 @@
 source $HOME/.config/aliases
 source $HOME/.config/variables
 
-function check_last_exit_code() {
-  local LAST_EXIT_CODE=$?
-  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
-    local EXIT_CODE_PROMPT=' '
-    EXIT_CODE_PROMPT+="%F{1}✖"
-    EXIT_CODE_PROMPT+="%F{9}$LAST_EXIT_CODE"
-    EXIT_CODE_PROMPT+="%F{1}✖%f-"
-    echo "$EXIT_CODE_PROMPT"
-  fi
-}
-
-preexec() {
-    cmd_start=$(date +%s%N)
-}
-
-precmd() {
-  local cmd_end=$(date +%s%N)
-  local elapsed_time=$((cmd_end-cmd_start))
-  elapsed=$(printf "%.2f" $((elapsed_time*.000000001)))
-}
 
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -60,7 +40,28 @@ bindkey '^[3;5~' delete-char
 
 
 autoload -Uz vcs_info
-precmd() { vcs_info }
+
+function check_last_exit_code() {
+  local LAST_EXIT_CODE=$?
+  if [[ $LAST_EXIT_CODE -ne 0 ]]; then
+    local EXIT_CODE_PROMPT=' '
+    EXIT_CODE_PROMPT+="%F{1}✖"
+    EXIT_CODE_PROMPT+="%F{9}$LAST_EXIT_CODE"
+    EXIT_CODE_PROMPT+="%F{1}✖%f-"
+    echo "$EXIT_CODE_PROMPT"
+  fi
+}
+
+preexec() {
+    cmd_start=$(date +%s%N)
+}
+
+precmd() {
+  vcs_info
+  local cmd_end=$(date +%s%N)
+  local elapsed_time=$((cmd_end-cmd_start))
+  elapsed=$(printf "%.2f" $((elapsed_time*.000000001)))
+}
 
 # Format the vcs_info_msg_0_ variable
 zstyle ':vcs_info:git:*' formats ' %b'

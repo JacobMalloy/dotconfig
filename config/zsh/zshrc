@@ -53,14 +53,14 @@ function check_last_exit_code() {
 }
 
 preexec() {
-    cmd_start=$(date +%s%N)
+#    cmd_start=$(date +%s%N)
 }
 
 precmd() {
   vcs_info
-  local cmd_end=$(date +%s%N)
-  local elapsed_time=$((cmd_end-cmd_start))
-  elapsed=$(printf "%.2f" $((elapsed_time*.000000001)))
+#  local cmd_end=$(date +%s%N)
+#  local elapsed_time=$((cmd_end-cmd_start))
+#  elapsed=$(printf "%.2f" $((elapsed_time*.000000001)))
 }
 
 # Format the vcs_info_msg_0_ variable
@@ -69,7 +69,7 @@ zstyle ':vcs_info:git:*' formats ' %b'
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 
-RPROMPT='$(check_last_exit_code)${elapsed}'
+RPROMPT='$(check_last_exit_code)'
 
 PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 

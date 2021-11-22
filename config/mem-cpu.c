@@ -4,6 +4,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if __APPLE__
+
+#include <mach/vm_statistics.h>
+#include <mach/mach_types.h>
+#include <mach/mach_init.h>
+#include <mach/mach_host.h>
+
+#endif
+
 #define SLEEP_TIME 10000
 #define BAR_WIDTH 10
 
@@ -129,6 +138,40 @@ struct data get_cpu(char *filename){
     return returnValue;
 }
 
+
+#elif __APPLE__
+
+struct data get_mem(){
+    vm_size_t page_size;
+    mach_port_t mach_port;
+    mach_msg_type_number_t count;
+    vm_statistics64_data_t vm_stats;
+    struct data return_value;
+    memset(&return_value,0,sizeof(struct data));
+
+    mach_port = mach_host_self();
+
+    count = sizeof(vm_stats) / sizeof(natural_t);
+    if (KERN_SUCCESS == host_page_size(mach_port, &page_size) &&
+        KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO,
+                                        (host_info64_t)&vm_stats, &count))
+    {
+        return_value.free = (int64_t)vm_stats.free_count * (int64_t)page_size/1024;
+
+        return_value.total = ((int64_t)vm_stats.active_count +
+                              (int64_t)vm_stats.inactive_count +
+                              (int64_t)vm_stats.wire_count + (int64_t)vm_stats.free_count) * (int64_t)page_size/1024;
+    }
+    return return_value;
+}
+
+
+struct data get_cpu(char * filename){
+    struct data return_value;
+    memset(&return_value,0,sizeof(struct data));
+    return return_value;
+}
+
 #else //end of __linux__
 struct data get_cpu(char * filename){
     fprintf(stderr,"This platform is not supported\n");
@@ -149,10 +192,6 @@ int main(int argc, char* argv[]){
     char load[250];
     char filename[250];
     struct data cpu,mem;
-
-    #if __APPLE__
-    return 0;
-    #endif
 
     if(argc!=2){
         fprintf(stderr,"please enter an argument for the filename");

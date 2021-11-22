@@ -3,6 +3,7 @@ bc
 bison
 build-essential
 cpio
+dwarves
 fakeroot
 flex
 git

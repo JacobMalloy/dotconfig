@@ -82,6 +82,6 @@ mkdir -p $HOME/.config/kitty
 ln -sf $DIR/config/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
 
 
-if [ "${yed}" != "no" ]; then
+if [ "${YED}" != "no" ]; then
     ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE
 fi

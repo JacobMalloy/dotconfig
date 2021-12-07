@@ -70,7 +70,7 @@ struct data get_mem(){
         fprintf(stderr,"Failed to open /proc/meminfo\n");
         exit(-1);
     }
-    if(fscanf(fd,"MemTotal: %llu kB \n MemFree: %llu kB",&returnValue.total,&returnValue.free)!=2){
+    if(fscanf(fd,"MemTotal: %llu kB %*[^:]: %*[^:]: %llu kB \n",&returnValue.total,&returnValue.free)!=2){
         fprintf(stderr,"Read the incorrect amount from /proc/meminfo");
         exit(-1);
     }

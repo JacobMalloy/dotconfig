@@ -6,7 +6,7 @@ void kammerdienerb_find_cursor_word(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
 void jacobmalloy_frame_command_handler(yed_event *event);
 void jacobmalloy_ypm_update_quit(int argc, char **argv);
-void jacobmalloy_ypm_update_quit_pump(int argc, char **argv);
+void jacobmalloy_ypm_update_quit_pump(yed_event *event);
 
 int go_menu_stay;
 static yed_plugin *global_self;
@@ -147,7 +147,7 @@ void jacobmalloy_ypm_update_quit(int argc, char **argv){
     YEXE("ypm-update");
 }
 
-void jacobmalloy_ypm_update_quit_pump(int argc, char **argv){
+void jacobmalloy_ypm_update_quit_pump(yed_event *event){
     if(!yed_var_is_truthy("ypm-is-updating")){
         YEXE("quit");
     }

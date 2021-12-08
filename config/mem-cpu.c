@@ -156,7 +156,7 @@ struct data get_mem(){
         KERN_SUCCESS == host_statistics64(mach_port, HOST_VM_INFO,
                                         (host_info64_t)&vm_stats, &count))
     {
-        return_value.free = (int64_t)vm_stats.free_count * (int64_t)page_size/1024;
+        return_value.free = ((int64_t)vm_stats.free_count + (int64_t)vm_stats.active_count) * (int64_t)page_size/1024;
 
         return_value.total = ((int64_t)vm_stats.active_count +
                               (int64_t)vm_stats.inactive_count +

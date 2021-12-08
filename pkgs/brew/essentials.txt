@@ -1,8 +1,10 @@
 cask
 cmake
 gnu-time
+gpg
 htop
 ripgrep
 tmux
 tree
 vim
+wget

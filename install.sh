@@ -78,8 +78,8 @@ ln -f $DIR/ssh/rc $HOME/.ssh/rc
 chmod 644 ~/.ssh/rc
 
 echo "installing kitty"
-mkdir -p $HOME/.config/kitty
-ln -sf $DIR/config/kitty/kitty.conf $HOME/.config/kitty/kitty.conf
+rm -r $HOME/.config/kitty > /dev/null 2>&1
+ln -sf $DIR/config/kitty $HOME/.config/kitty
 
 
 if [ "${YED}" != "no" ]; then

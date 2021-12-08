@@ -48,7 +48,7 @@ set ctags-compl "yes"
 #set go-menu-force-split             "no"
 
 ### @style ###
-style-term-bg casey
+style-term-bg zulu
 
 ### @keybindings ###
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle

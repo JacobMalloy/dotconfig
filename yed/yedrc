@@ -102,11 +102,30 @@ set universal-copy-on-yank "yes"
 plugin-load git_variables
 plugin-load tab-stop
 
-
 set vimish-normal-attrs           "&attention swap"
 set vimish-insert-attrs           "&code-keyword swap"
 set vimish-delete-attrs           "&bad swap"
 set vimish-yank-attrs             "&code-typename swap"
+
+
+plugin-load mouse
+set mouse-cursor-scroll "yes"
+set mouse-scroll-num-lines "1"
+
+set "mouse-menu-on-word"      "Paste paste-yank-buffer                                                                            \
+                              'Jump to Definition' 'multi jump-stack-push ctags-jump-to-definition'                               \
+                               Manpage 'man-word'                                                                                 \
+                               Convert convert-number"
+
+set "mouse-menu-on-selection" "Copy yank-selection                    \
+                               Clipboard copy-to-universal-clipboard"
+
+set "mouse-menu-on-nothing"   "Build 'multi builder-start builder-view-output \"special-buffer-prepare-unfocus *builder-output\"' \
+                              'Frame New' frame-new                                                                               \
+                              'Frame Delete' frame-delete                                                                         \
+                               Return jump-stack-pop                                                                              \
+                               Reload reload"
+
 
 set git-variables-branch-icon     ": "
 

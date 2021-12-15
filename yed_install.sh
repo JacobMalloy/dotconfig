@@ -7,6 +7,9 @@ YPM_UPDATE="no"
 CORE_INSTALL="no"
 PLUGINS_INSTALL="yes"
 
+PLUGIN_OPTO="-O2"
+YED_EXTRA_FLAGS="-c debug"
+
 for var in "$@"
 do
     case "$var" in
@@ -19,8 +22,12 @@ do
     "--no-plugins")
         PLUGINS_INSTALL="no"
     ;;
+    "--debug")
+        PLUGIN_OPTO="-O0 -g"
+        YED_EXTRA_FLAGS="-c debug"
+    ;;
     *)
-    printf "options are:\n--ypm-update\n--core-install\n--no-plugins\n"
+    printf "options are:\n--debug\n--ypm-update\n--core-install\n--no-plugins\n"
     exit 1
     ;;
     esac
@@ -31,7 +38,7 @@ cd $DIR
 eval HM=$(echo ~${USER})
 
 if [ $CORE_INSTALL == "yes" ]; then
-    ./yed/yed/install.sh -p ~/.local
+    ./yed/yed/install.sh -p ~/.local ${YED_EXTRA_FLAGS}
 fi
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
@@ -40,7 +47,7 @@ CC=gcc
 LD_FLAGS="$(yed --print-ldflags)"
 
 if [ $(uname) = "Darwin" ]; then
-	if uname -a | grep "arm64" >/dev/null 2>&1; then	            
+	if uname -a | grep "arm64" >/dev/null 2>&1; then	
 		C_Flags+=" -arch arm64"
 	fi
 fi

@@ -102,6 +102,12 @@ set universal-copy-on-yank "yes"
 plugin-load git_variables
 plugin-load tab-stop
 
+
+set vimish-normal-attrs           "&attention swap"
+set vimish-insert-attrs           "&code-keyword swap"
+set vimish-delete-attrs           "&bad swap"
+set vimish-yank-attrs             "&code-typename swap"
+
 set git-variables-branch-icon     ": "
 
 set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"

@@ -74,7 +74,7 @@ ln -f ${YED_DIR}/ypm_list ${HOME_YED_DIR}
 ln -sf ${YED_DIR}/templates ${HOME_YED_DIR}
 
 if [ $YPM_UPDATE == "yes" ]; then
-    yed -c jacobmalloy-ypm-update-quit
+    ./yed/ypm_install.sh
 fi
 
 echo "Done."

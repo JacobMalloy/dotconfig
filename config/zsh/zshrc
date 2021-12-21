@@ -20,7 +20,7 @@ SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
-setopt share_history # share history between different instances of the shell
+#setopt share_history # share history between different instances of the shell
 
 
 setopt correct_all # autocorrect commands
@@ -47,7 +47,7 @@ function check_last_exit_code() {
     local EXIT_CODE_PROMPT=' '
     EXIT_CODE_PROMPT+="%F{1}✖"
     EXIT_CODE_PROMPT+="%F{9}$LAST_EXIT_CODE"
-    EXIT_CODE_PROMPT+="%F{1}✖%f-"
+    EXIT_CODE_PROMPT+="%F{1}✖%f"
     echo "$EXIT_CODE_PROMPT"
   fi
 }

@@ -16,20 +16,25 @@ git fetch
 git checkout v$(yed --version)
 git pull
 
-echo "Updating Submodules"
-cat ../ypm_list | xargs printf -- "ypm_plugins/%s " | xargs git submodule update --init --remote
+git submodule init
+for word in $(<../ypm_list); do
+    echo "Cloning ${word}"
+    git submodule update --remote ./ypm_plugins/${word} &
+done
+
+wait
+
+#cat ../ypm_list | xargs printf -- "ypm_plugins/%s " | xargs git submodule update --init --remote # I really liked this way of doing it, but it was single threaded and slow
 
 
-pids=()
 for word in $(<../ypm_list); do
     echo "building ${word}"
-    (cd ./ypm_plugins/${word} && ./build.sh &)
-    pids+=($!)
+    cd ./ypm_plugins/${word}
+    ./build.sh &
+    cd ${YED_CONFIG_DIRECTORY}/ypm
 done
 
-for p in ${pids[@]}; do
-    wait $p || exit 1
-done
+wait
 
 cd ${YED_CONFIG_DIRECTORY}/ypm/ypm_plugins
 

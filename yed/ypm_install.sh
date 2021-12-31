@@ -43,8 +43,8 @@ mkdir -p ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang/tools
 mkdir -p ${YED_CONFIG_DIRECTORY}/ypm/plugins/styles
 
 echo "copying binaries"
-find . -name "*.so" -maxdepth 2 -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins \;
-find ./lang/ -name "*.so" -maxdepth 2 -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang \;
-find ./lang/syntax/ -name "*.so" -maxdepth 2 -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang/syntax \;
-find ./lang/tools/ -name "*.so" -maxdepth 2 -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang/tools \;
-find ./styles/ -name "*.so" -maxdepth 2 -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/styles \;
+find . -maxdepth 2 -name "*.so" -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins \;
+find ./lang/ -maxdepth 2 -name "*.so" -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang \;
+find ./lang/syntax/ -maxdepth 2 -name "*.so" -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang/syntax \;
+find ./lang/tools/ -maxdepth 2 -name "*.so" -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/lang/tools \;
+find ./styles/ -maxdepth 2 -name "*.so" -exec mv {} ${YED_CONFIG_DIRECTORY}/ypm/plugins/styles \;

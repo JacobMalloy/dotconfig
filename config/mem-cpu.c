@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #if __APPLE__
 
@@ -35,7 +36,7 @@ void getMemRatio(char *c,struct data d){
 void getCpuUsageBar(char *c,struct data d){
     char temp[25];
     strcpy(c,"[");
-    uint32_t bars = (d.total-d.idle)*BAR_WIDTH/d.total;
+    uint32_t bars = round(1.0*(d.total-d.idle)*BAR_WIDTH/d.total);
     for(uint32_t i =0;i<BAR_WIDTH;i++){
         if (i<bars){
             strcat(c,"|");
@@ -44,7 +45,7 @@ void getCpuUsageBar(char *c,struct data d){
         }
 
     }
-    snprintf(temp,25,"] %3.2lf%%",percentage(d));
+    snprintf(temp,25,"] %6.2lf%%",percentage(d));
     strcat(c,temp);
 }
 
@@ -208,6 +209,6 @@ int main(int argc, char* argv[]){
     loadAvg(load);
     getMemRatio(string,mem);
     getCpuUsageBar(barGraph,cpu);
-    printf("%s %s %s",string,barGraph,load);
+    printf("%s %s•%s",string,barGraph,load);
     return 0;
 }

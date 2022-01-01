@@ -4,6 +4,7 @@ cmake
 exuberant-ctags
 gdb
 git
+htop
 make
 man-db
 python3

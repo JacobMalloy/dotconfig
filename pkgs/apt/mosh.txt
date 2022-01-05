@@ -1,0 +1,7 @@
+libncurses5-dev
+libprotobuf-dev
+libssl-dev
+libutempter-dev
+perl
+protobuf-compiler
+zlib1g-dev

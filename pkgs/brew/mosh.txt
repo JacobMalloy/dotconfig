@@ -1,0 +1,5 @@
+autoconf
+automake
+ncurses
+perl
+protobuf-c

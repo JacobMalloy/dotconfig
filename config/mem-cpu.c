@@ -52,7 +52,7 @@ void getCpuUsageBar(char *c,struct data d){
 void loadAvg(char * c){
     double values[3];
     getloadavg(values,3);
-    sprintf(c,"%.2lf %.2lf %.2lf",values[0],values[1],values[2]);
+    sprintf(c,"%5.2lf %5.2lf %5.2lf",values[0],values[1],values[2]);
 }
 
 

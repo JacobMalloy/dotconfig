@@ -97,7 +97,7 @@ hook post-write                 \
             "ctags-hl-reparse"'
 
 plugin-load universal_clipboard
-set universal-copy-on-yank "yes"
+set universal-copy-on-yank "no"
 
 plugin-load git_variables
 plugin-load tab-stop

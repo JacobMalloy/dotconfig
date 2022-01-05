@@ -52,3 +52,5 @@ styles/zulu
 lang/syntax/make
 make-tab
 convert
+lang/javascript
+lang/syntax/javascript

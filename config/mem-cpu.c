@@ -33,17 +33,15 @@ void getMemRatio(char *c,struct data d){
     sprintf(c,"%.1lf/%.1fG",1.0*(d.total-d.free)/0x100000,1.0*d.total/0x100000);
 }
 
+const char *PROGRESS_BAR_SYMBOLS[]={" ","▏","▎","▍","▌","▋","▊","▉","█"};
+
 void getCpuUsageBar(char *c,struct data d){
     char temp[25];
     strcpy(c,"[");
-    uint32_t bars = round(1.0*(d.total-d.idle)*BAR_WIDTH/d.total);
+    double bars = 1.0*(d.total-d.idle)*BAR_WIDTH*8/d.total;
     for(uint32_t i =0;i<BAR_WIDTH;i++){
-        if (i<bars){
-            strcat(c,"|");
-        }else{
-            strcat(c," ");
-        }
-
+        double current_value=bars-((i)*8);
+        strcat(c,PROGRESS_BAR_SYMBOLS[current_value>8?8:current_value<0?0:(int)round(current_value)]);
     }
     snprintf(temp,25,"] %6.2lf%%",percentage(d));
     strcat(c,temp);

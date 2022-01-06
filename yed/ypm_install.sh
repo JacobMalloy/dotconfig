@@ -13,7 +13,7 @@ cd ypm
 
 git reset --hard HEAD > /dev/null 2>&1
 git fetch
-git checkout v$(yed --version)
+git checkout v$(yed --major-version)
 git pull
 
 git submodule init

@@ -18,8 +18,10 @@ git pull
 
 git submodule init
 for word in $(<../ypm_list); do
-    echo "Cloning ${word}"
-    git submodule update --remote ./ypm_plugins/${word} &
+    if [ -d "./ypm_plugins/${word}" ]; then
+        echo "Cloning ${word}"
+        git submodule update --remote ./ypm_plugins/${word} &
+    fi
 done
 
 wait
@@ -28,10 +30,12 @@ wait
 
 
 for word in $(<../ypm_list); do
-    echo "building ${word}"
-    cd ./ypm_plugins/${word}
-    ./build.sh &
-    cd ${YED_CONFIG_DIRECTORY}/ypm
+    if [ -d "./ypm_plugins/${word}" ]; then
+        echo "building ${word}"
+        cd ./ypm_plugins/${word}
+        ./build.sh &
+        cd ${YED_CONFIG_DIRECTORY}/ypm
+    fi
 done
 
 wait

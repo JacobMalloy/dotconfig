@@ -106,7 +106,6 @@ set vimish-delete-attrs           "&bad swap"
 set vimish-yank-attrs             "&code-typename swap"
 
 
-plugin-load mouse
 set mouse-cursor-scroll "yes"
 set mouse-scroll-num-lines "1"
 

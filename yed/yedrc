@@ -90,17 +90,15 @@ vimish-bind  insert  "j j"        vimish-exit-insert
 vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 
 ### @hooks ###
-hook post-write                 \
-    if use-ctags                \
-        'multi                  \
-            "ctags-gen"         \
-            "ctags-hl-reparse"'
 
 plugin-load universal_clipboard
 set universal-copy-on-yank "no"
 
 plugin-load git_variables
 plugin-load tab-stop
+plugin-load lang/rust
+plugin-load lang/syntax/rust
+
 
 set vimish-normal-attrs           "&attention swap"
 set vimish-insert-attrs           "&code-keyword swap"

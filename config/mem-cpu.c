@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdint.h>
+#include <inttypes.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -69,7 +69,7 @@ struct data get_mem(){
         fprintf(stderr,"Failed to open /proc/meminfo\n");
         exit(-1);
     }
-    if(fscanf(fd,"MemTotal: %llu kB %*[^:]: %*[^:]: %llu kB \n",&returnValue.total,&returnValue.free)!=2){
+    if(fscanf(fd,"MemTotal: %"PRIu64" kB %*[^:]: %*[^:]: %"PRIu64" kB \n",&returnValue.total,&returnValue.free)!=2){
         fprintf(stderr,"Read the incorrect amount from /proc/meminfo");
         exit(-1);
     }
@@ -85,7 +85,7 @@ struct cpu_internal get_cpu_internal(){
         fprintf(stderr,"Failed to open /proc/stat\n");
         exit(-1);
     }
-    if(fscanf(fd,"cpu  %llu %llu %llu %llu %llu %llu %llu",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq)!=7){
+    if(fscanf(fd,"cpu  %"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64"",&returnValue.user,&returnValue.nice,&returnValue.system,&returnValue.idle,&returnValue.iowait,&returnValue.irq,&returnValue.softirq)!=7){
         fprintf(stderr,"failed to read 7 from /proc/stat\n");
         exit(-1);
     }

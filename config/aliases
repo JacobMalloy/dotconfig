@@ -6,3 +6,4 @@ alias set-my-jdk='export my_jdk=$(pwd) && alias my-java=$my_jdk/build/linux-x86_
 alias diff="diff --color=auto"
 alias set-title='printf "\033]0;%s\007"'
 alias send-notification='printf "\x1b]99;;%s\x1b\\"'
+alias mosh='mosh --ssh="ssh -a"'

@@ -54,7 +54,6 @@ style-term-bg zulu
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle
 vimish-bind  normal  "spc l c"    latex-compile-current-file
 vimish-bind  normal  "spc l v"    latex-view-current-file
-vimish-bind  normal  "spc r d"    redraw
 vimish-bind  normal  "spc v s p"  frame-vsplit
 vimish-bind  normal  "spc h s p"  frame-hsplit
 vimish-bind  normal  "spc b o"    command-prompt "buffer "
@@ -95,7 +94,6 @@ plugin-load universal_clipboard
 set universal-copy-on-yank "no"
 
 plugin-load git_variables
-plugin-load tab-stop
 plugin-load lang/rust
 plugin-load lang/syntax/rust
 

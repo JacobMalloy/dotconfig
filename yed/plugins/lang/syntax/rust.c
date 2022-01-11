@@ -106,6 +106,7 @@ int yed_plugin_boot(yed_plugin *self) {
 
         APUSH("&code-fn-call");
             REGEXSUB("([[:alpha:]_][[:alnum:]_]*!\{0,1\})[[:space:]]*\\(", 1);
+            REGEXSUB("([[:alpha:]_][[:alnum:]_]*!)[[:space:]]*\\[", 1);
         APOP();
 
         APUSH("&code-number");
@@ -172,7 +173,6 @@ int yed_plugin_boot(yed_plugin *self) {
             KWD("return");
             KWD("switch");
             KWD("while");
-            REGEXSUB("^[[:space:]]*([[:alpha:]_][[:alnum:]_]*):", 1);
         APOP();
 
         APUSH("&code-typename");

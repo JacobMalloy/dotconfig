@@ -104,8 +104,8 @@ set vimish-delete-attrs           "&bad swap"
 set vimish-yank-attrs             "&code-typename swap"
 
 
-set mouse-cursor-scroll "yes"
-set mouse-scroll-num-lines "1"
+set mouse-cursor-scroll "no"
+set mouse-scroll-num-lines "3"
 
 set "mouse-menu-on-word"      "Paste paste-yank-buffer                                                                            \
                               'Jump to Definition' 'multi jump-stack-push ctags-jump-to-definition'                               \

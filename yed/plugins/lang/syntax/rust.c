@@ -54,7 +54,9 @@ void eline(yed_event *event)  {
 
 void unload(yed_plugin *self) {
     yed_syntax_free(&syn);
+#if YED_VERSION < 1400
     ys->redraw = 1;
+#endif
 }
 
 int yed_plugin_boot(yed_plugin *self) {
@@ -206,7 +208,9 @@ int yed_plugin_boot(yed_plugin *self) {
         APOP();
     ENDSYN();
 
+#if YED_VERSION < 1400
     ys->redraw = 1;
+#endif
 
     return 0;
 }

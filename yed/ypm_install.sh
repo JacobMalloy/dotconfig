@@ -26,7 +26,7 @@ for word in $(<../ypm_list); do
     if [ -d "./ypm_plugins/${word}" ]; then
         echo "Cloning building and installing ${word}"
         #git submodule update --remote ./ypm_plugins/${word} &
-        bash -c "git submodule update --remote ./ypm_plugins/${word} && cd ./ypm_plugins/${word} && ./build.sh && mv ./*.so ${YED_CONFIG_DIRECTORY}/ypm/plugins/${word}.so" &
+        bash -c "git submodule update --force ./ypm_plugins/${word} && cd ./ypm_plugins/${word} && ./build.sh && mv ./*.so ${YED_CONFIG_DIRECTORY}/ypm/plugins/${word}.so" &
     fi
 done
 

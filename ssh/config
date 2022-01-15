@@ -9,7 +9,7 @@ Host linux
     ForwardAgent yes
 Host vpn
     Hostname 192.168.86.105
-    User pi
+    User jmalloy
     ForwardAgent yes
 Host nas
     Hostname 192.168.86.226

@@ -14,7 +14,6 @@
 
 #endif
 
-#define SLEEP_TIME 10000
 #define BAR_WIDTH 10
 
 struct data{

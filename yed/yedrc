@@ -116,7 +116,8 @@ set "mouse-menu-on-selection" "Copy yank-selection                    \
                                Clipboard copy-to-universal-clipboard"
 
 set "mouse-menu-on-nothing"   "Build 'multi builder-start builder-view-output \"special-buffer-prepare-unfocus *builder-output\"' \
-                              'Frame New' frame-new                                                                               \
+                              'Frame V split' frame-vsplit                                                                        \
+                              'Frame H split' frame-hsplit                                                                        \
                               'Frame Delete' frame-delete                                                                         \
                                Return jump-stack-pop                                                                              \
                                Reload reload"

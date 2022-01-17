@@ -92,10 +92,6 @@ struct cpu_internal get_cpu_internal(){
     return returnValue;
 }
 
-void print_cpu(struct cpu_internal *t){
-    //fprintf(stderr,"%ld %ld %ld %ld %ld %ld %ld\n",t->user,t->nice,t->system,t->idle,t->iowait,t->irq,t->softirq);
-}
-
 struct data get_cpu(char *filename){
     struct cpu_internal cpu_new,cpu_old,cpu_diff;
     struct data returnValue;
@@ -111,16 +107,9 @@ struct data get_cpu(char *filename){
         fclose(fd);
     }
     cpu_new = get_cpu_internal();
-    cpu_diff.user = cpu_new.user-cpu_old.user;
-    cpu_diff.nice = cpu_new.nice-cpu_old.nice;
-    cpu_diff.system = cpu_new.system-cpu_old.system;
-    cpu_diff.idle = cpu_new.idle-cpu_old.idle;
-    cpu_diff.iowait = cpu_new.iowait-cpu_old.iowait;
-    cpu_diff.irq = cpu_new.irq-cpu_old.irq;
-    cpu_diff.softirq = cpu_new.softirq-cpu_old.softirq;
-    print_cpu(&cpu_old);
-    print_cpu(&cpu_new);
-    print_cpu(&cpu_diff);
+    for(int i =0;i<sizeof(struct cpu_internal)/sizeof(int64_t);i++){
+        ((int64_t *)&cpu_diff)[i]=((int64_t *)&cpu_new)[i]-((int64_t *)&cpu_old)[i];
+    }
     returnValue.total = cpu_diff.user+cpu_diff.nice+cpu_diff.system+cpu_diff.idle+cpu_diff.iowait+cpu_diff.irq+cpu_diff.softirq;
     returnValue.idle = cpu_diff.iowait+cpu_diff.idle;
     fd=fopen(filename,"wb+");

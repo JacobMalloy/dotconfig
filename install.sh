@@ -1,6 +1,6 @@
 #!/bin/bash
 CC=gcc
-CCFlags="-O2"
+CCFlags="-O3"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [ $(uname) = "Darwin" ]; then

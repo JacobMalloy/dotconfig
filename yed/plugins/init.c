@@ -1,7 +1,6 @@
 #include <yed/plugin.h>
 
 void kammerdienerb_quit(int n_args, char **args);
-void kammerdienerb_write_quit(int n_args, char **args);
 void kammerdienerb_find_cursor_word(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
 void jacobmalloy_frame_command_handler(yed_event *event);
@@ -95,8 +94,6 @@ int yed_plugin_boot(yed_plugin *self) {
 
     yed_plugin_set_command(self, "q",  kammerdienerb_quit);
     yed_plugin_set_command(self, "Q",  kammerdienerb_quit);
-    yed_plugin_set_command(self, "wq", kammerdienerb_write_quit);
-    yed_plugin_set_command(self, "Wq", kammerdienerb_write_quit);
     yed_log("\ninit.c: added overrides for 'q'/'Q' and 'wq'/'Wq' commands");
 
     yed_event_handler h;
@@ -184,11 +181,6 @@ void kammerdienerb_quit(int n_args, char **args) {
     } else {
         YEXE("frame-delete");
     }
-}
-
-void kammerdienerb_write_quit(int n_args, char **args) {
-    YEXE("w");
-    YEXE("q");
 }
 
 void kammerdienerb_find_cursor_word(int n_args, char **args) {

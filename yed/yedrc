@@ -93,6 +93,7 @@ vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 plugin-load universal_clipboard
 set universal-copy-on-yank "no"
 
+plugin-load utils
 plugin-load git_variables
 plugin-load lang/rust
 plugin-load lang/syntax/rust

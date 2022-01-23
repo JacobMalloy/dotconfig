@@ -62,6 +62,8 @@ ln -f $DIR/zshenv $HOME/.zshenv
 echo "install bashrc"
 ln -f $DIR/bashrc $HOME/.bashrc
 
+echo "install vimrc"
+ln -sf $DIR/vimrc $HOME/.vimrc
 
 echo "install ssh"
 mkdir -p $HOME/.ssh

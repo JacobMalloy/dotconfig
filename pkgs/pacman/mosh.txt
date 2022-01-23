@@ -1,0 +1,10 @@
+automake
+libffi
+libutempter
+make
+ncurses
+openssl
+perl
+protobuf
+protobuf-c
+zlib

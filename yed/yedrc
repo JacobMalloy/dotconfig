@@ -61,20 +61,6 @@ vimish-bind  insert  "q q"        cursor-right
 vimish-bind  insert  "j j"        vimish-exit-insert
 vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 
-
-
-### @aliased commands ###
-alias "qa" quit
-alias "q!" no-confirm-quit
-alias "wa" write-all
-alias "wqa" multi "write-all" "quit"
-alias "xa" "wqa"
-alias "wq" multi "w" "q"
-alias "WQ" "wq"
-alias "wQ" "wq"
-alias "Wq" "wq"
-
-
 plugin-load universal_clipboard
 set universal-copy-on-yank "no"
 
@@ -114,7 +100,18 @@ set git-variables-branch-icon     ": "
 set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
 set status-line-right             "%[fg eeeade]%(builder-status) %[]%t %5l:%-3c "
 set status-line-center            "%{vimish-mode-attrs}  %(vimish-mode)  %[]"
+set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc"
 
+### @aliased commands ###
+alias "qa" quit
+alias "q!" no-confirm-quit
+alias "wa" write-all
+alias "wqa" multi "write-all" "quit"
+alias "xa" "wqa"
+alias "wq" multi "w" "q"
+alias "WQ" "wq"
+alias "wQ" "wq"
+alias "Wq" "wq"
 
 ### @project ###
 # Load directory-specific rc file.

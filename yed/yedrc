@@ -88,11 +88,10 @@ set "mouse-menu-on-selection" "Copy yank-selection                    \
                                Clipboard copy-to-universal-clipboard"
 
 set "mouse-menu-on-nothing"   "Build 'multi builder-start builder-view-output \"special-buffer-prepare-unfocus *builder-output\"' \
-                              'Frame V split' frame-vsplit                                                                        \
-                              'Frame H split' frame-hsplit                                                                        \
+                              'V-Split' frame-vsplit                                                                              \
+                              'H-Split' frame-hsplit                                                                              \
                               'Frame Delete' frame-delete                                                                         \
-                               Return jump-stack-pop                                                                              \
-                               Reload reload"
+                               Return jump-stack-pop"
 
 
 set git-variables-branch-icon     ": "

@@ -13,7 +13,10 @@ main:main.cpp
 	$(CXX) $(CXXFLAGS) $(OPTO) $^ -o $@
 
 clean:
-	rm -f *.o main.cpp
+	rm -f *.o
 
 test:     all
 	echo "put gradescript here"
+
+test-memory: all
+	valgrind --leak-check=full --show-reachable=yes ./main

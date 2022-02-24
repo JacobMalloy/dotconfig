@@ -50,7 +50,7 @@ ln -f $DIR/gitignore $HOME/.gitignore
 
 echo "install tmux conf"
 
-$CC $CCFlags $DIR/config/mem-cpu.c -lm -o $HOME/.config/jacob-performance
+$CC $CCFlags $DIR/config/mem-cpu.c -lm -o $HOME/.config/tmux-performance
 ln -sf $DIR/tmux.conf $HOME/.tmux.conf
 
 echo "install zsh"

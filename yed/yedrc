@@ -95,6 +95,7 @@ set "mouse-menu-on-nothing"   "Build 'multi builder-start builder-view-output \"
 
 
 set git-variables-branch-icon     ": "
+set git-variables-update-interval "600000"
 
 set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
 set status-line-right             "%[fg eeeade]%(builder-status) %[]%t %5l:%-3c "

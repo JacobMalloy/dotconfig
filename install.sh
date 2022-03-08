@@ -45,8 +45,8 @@ source $HOME/.config/variables
 
 echo "installing git files"
 
-ln -f $DIR/gitconfig $HOME/.gitconfig
-ln -f $DIR/gitignore $HOME/.gitignore
+ln -sf $DIR/gitconfig $HOME/.gitconfig
+ln -sf $DIR/gitignore $HOME/.gitignore
 
 echo "install tmux conf"
 

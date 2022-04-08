@@ -1,0 +1,9 @@
+minizip
+unzip
+zip
+libx11
+libxrender
+libxrandr
+libxtst
+libcups
+alsa-lib

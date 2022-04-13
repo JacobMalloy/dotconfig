@@ -8,7 +8,7 @@ CORE_INSTALL="no"
 PLUGINS_INSTALL="yes"
 
 PLUGIN_OPTO="-O2"
-YED_EXTRA_FLAGS="-c debug"
+YED_EXTRA_FLAGS=""
 
 for var in "$@"
 do

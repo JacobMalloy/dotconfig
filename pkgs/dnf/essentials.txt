@@ -1,0 +1,17 @@
+clang
+cmake
+gdb
+git
+htop
+make
+man-db
+python3
+python3-pip
+ripgrep
+sudo
+time
+tmux
+util-linux-user
+vim
+wget
+zsh

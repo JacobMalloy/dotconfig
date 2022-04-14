@@ -8,7 +8,7 @@ if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit 1
 fi
-YUM_CMD=$(which yum 2>/dev/null)
+DNF_CMD=$(which dnf 2>/dev/null)
 APT_CMD=$(which apt 2>/dev/null)
 PACMAN_CMD=$(which pacman 2>/dev/null)
 fi
@@ -29,6 +29,8 @@ elif [[ ! -z $BREW_CMD ]]; then
     PREFIX="${DIR}/pkgs/brew/"
 elif [[ ! -z $PACMAN_CMD ]]; then
     PREFIX="${DIR}/pkgs/pacman/"
+elif [[ ! -z $DNF_CMD ]]; then
+    PREFIX="${DIR}/pkgs/dnf/"
 else
     echo "error package manager not supported"
     exit 1;
@@ -53,7 +55,7 @@ if [ -z ${RETURN_VALUES+x} ]; then
     fi
     RETURN_VALUES="$(sort -u ${FILES} | xargs)"
 fi
-
+echo $RETURN_VALUES
 
 if [[ ! -z $APT_CMD ]]; then
     apt install -y ${RETURN_VALUES}
@@ -61,6 +63,8 @@ elif [[ ! -z $BREW_CMD ]]; then
     brew install ${RETURN_VALUES}
 elif [[ ! -z $PACMAN_CMD ]]; then
     pacman -Sy --needed $RETURN_VALUES
+elif [[ ! -z $DNF_CMD ]];then
+    dnf install $RETURN_VALUES
 else
     echo "error package manager not supported"
     exit 1;

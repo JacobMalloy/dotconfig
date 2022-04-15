@@ -42,7 +42,7 @@ Host desktop
     Hostname 10.6.0.5
     User sjake
 Host plex-dvr
-    Hostname 10.0.0.76
+    Hostname 10.6.0.7
     User jmalloy
     ForwardAgent yes
 Host com

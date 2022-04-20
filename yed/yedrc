@@ -24,6 +24,7 @@ set cursor-word-hl-idle-threshold 1500
 set builder-popup-rg              "yes"
 set use-ctags "no"
 set ctags-compl "yes"
+set completer-sources "word tags"
 
 ### @style ###
 style-term-bg zulu

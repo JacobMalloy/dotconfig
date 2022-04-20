@@ -69,3 +69,7 @@ Host com1635
     Hostname com1635.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host com1643
+    Hostname com1643.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes

@@ -1,0 +1,6 @@
+autoconf
+automakeprotobuf-compiler
+openssl-devel
+perl-diagnostics
+protobuf-c-devel
+protobuf-devel

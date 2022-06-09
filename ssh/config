@@ -13,7 +13,7 @@ Host vpn
     ForwardAgent yes
 Host nas
     Hostname 192.168.86.226
-    User sjakem
+    User jmalloy
 Host hydra
     Hostname hydra30.eecs.utk.edu
     User jmalloy1

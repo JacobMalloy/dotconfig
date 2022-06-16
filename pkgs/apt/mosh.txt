@@ -3,5 +3,6 @@ libprotobuf-dev
 libssl-dev
 libutempter-dev
 perl
+pkg-config
 protobuf-compiler
 zlib1g-dev

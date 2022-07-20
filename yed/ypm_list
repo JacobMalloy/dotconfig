@@ -58,3 +58,7 @@ mouse
 mouse_menu
 mouse_frame_control
 command-history
+terminal
+custom_frames
+tree_view
+style_picker

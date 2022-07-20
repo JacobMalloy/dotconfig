@@ -75,7 +75,6 @@ PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 
 
 if [ -S "$SSH_AUTH_SOCK" ]; then
-    echo "$SSH_AUTH_SOCK"
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi
 

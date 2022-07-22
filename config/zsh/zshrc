@@ -79,8 +79,9 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
 fi
 
 
-
-if [[ ! -e ~/.ssh/ssh_auth_sock ]]; then
+ssh-add -l >/dev/null 2>&1
+RESULT=$?
+if [ $RESULT -eq 2 ]; then
     eval `ssh-agent -s` &> /dev/null
     trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock

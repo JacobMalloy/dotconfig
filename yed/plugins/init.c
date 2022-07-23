@@ -4,8 +4,7 @@ void kammerdienerb_quit(int n_args, char **args);
 void kammerdienerb_find_cursor_word(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
 void jacobmalloy_frame_command_handler(yed_event *event);
-void jacobmalloy_ypm_update_quit(int argc, char **argv);
-void jacobmalloy_ypm_update_quit_pump(yed_event *event);
+void jacobmalloy_frame_next(int n_args,char **args);
 
 int go_menu_stay;
 static yed_plugin *global_self;
@@ -46,7 +45,7 @@ int yed_plugin_boot(yed_plugin *self) {
     get_or_make_buffer(ARGS_SCRATCH_BUFF);
 
     yed_plugin_set_command(self, "jacobmalloy-frame-commands", jacobmalloy_frame_commands);
-    yed_plugin_set_command(self, "jacobmalloy-ypm-update-quit", jacobmalloy_ypm_update_quit);
+    yed_plugin_set_command(self, "frame-next", jacobmalloy_frame_next);
     yed_plugin_set_command(self, "kammerdienerb-find-cursor-word", kammerdienerb_find_cursor_word);
 
 
@@ -136,18 +135,43 @@ void jacobmalloy_frame_command_handler(yed_event *event){
     do_it=0;
 }
 
-void jacobmalloy_ypm_update_quit(int argc, char **argv){
-    yed_event_handler h;
-    h.kind = EVENT_POST_PUMP;
-    h.fn = jacobmalloy_ypm_update_quit_pump;
-    yed_plugin_add_event_handler(global_self,h);
-    YEXE("ypm-update");
-}
 
-void jacobmalloy_ypm_update_quit_pump(yed_event *event){
-    if(!yed_var_is_truthy("ypm-is-updating")){
-        YEXE("quit");
+void jacobmalloy_frame_next(int n_args,char **args){
+    yed_frame *cur_frame, *frame, **frame_it;
+    int        take_next;
+
+    if (n_args != 0) {
+        yed_cerr("expected 0 arguments, but got %d", n_args);
+        return;
     }
+
+    if (!ys->active_frame) {
+        yed_cerr("no active frame");
+        return;
+    }
+
+    if (array_len(ys->frames) == 1) { return; }
+
+    frame     = NULL;
+    cur_frame = ys->active_frame;
+
+    if (cur_frame == *(yed_frame**)array_last(ys->frames)) {
+        frame = *(yed_frame**)array_item(ys->frames, 0);
+    } else {
+        take_next = 0;
+        array_traverse(ys->frames, frame_it) {
+            if (take_next) {
+                frame = *frame_it;
+                break;
+            }
+
+            if (*frame_it == cur_frame) {
+                take_next = 1;
+            }
+        }
+    }
+
+    yed_activate_frame(frame);
 }
 
 void kammerdienerb_quit(int n_args, char **args) {

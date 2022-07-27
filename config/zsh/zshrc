@@ -74,14 +74,11 @@ RPROMPT='$(check_last_exit_code)'
 PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 
 
-if [ -S "$SSH_AUTH_SOCK" ]; then
-    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
-fi
 
 
 ssh-add -l >/dev/null 2>&1
 RESULT=$?
-if [ $RESULT -eq 2 ]; then
+if [ $RESULT != 0 ]; then
     eval `ssh-agent -s` &> /dev/null
     trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
     ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
@@ -90,4 +87,4 @@ fi
 
 #export SSH_AUTH_SOCK="~/.ssh/ssh_auth_sock"
 
-printf "\033]0;${HOST}\007"
+#printf "\033]0;${HOST}\007"

@@ -61,6 +61,7 @@ vimish-bind  normal  "ctrl-y"     redo
 vimish-bind  insert  "q q"        cursor-right
 vimish-bind  insert  "j j"        vimish-exit-insert
 vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
+vimish-bind normal   "ctrl-t"     toggle-term-mode
 
 plugin-load universal_clipboard
 set universal-copy-on-yank "no"

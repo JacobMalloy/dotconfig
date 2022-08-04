@@ -119,7 +119,7 @@ term-new
 set-custom-buffer-frame "tray" "s" 0 "h" "b" "r" .50 10 1 .05 100 "*calc *log *builder-output *term0"
 
 set-custom-buffer-frame "left" "s" 1 "v" "l" "r" .25 0 1 0.01 150 "*grep-list *ctags-find-list *find-file-list *go-menu *tree-view-list"
-set-custom-buffer-frame "man-page" "s" 0 "v" "r" "a" .25 15 0 "*man-page"
+set-custom-buffer-frame "man-page" "s" 0 "v" "r" "r" .25 15 0 "*man-page"
 
 set-custom-buffer-frame "float-middle" "f" 1 .1 .1 .8 .8 0 "*ypm-menu *ypm-output *bindings *scratch *shell-output *vars *yank"
 

@@ -72,10 +72,10 @@ plugin-load lang/rust
 plugin-load lang/syntax/rust
 
 
-set vimish-normal-attrs           "&attention swap"
-set vimish-insert-attrs           "&code-keyword swap"
-set vimish-delete-attrs           "&bad swap"
-set vimish-yank-attrs             "&code-typename swap"
+set vimish-normal-attrs           "&pink swap"
+set vimish-insert-attrs           "&lime swap"
+set vimish-delete-attrs           "&red bold swap"
+set vimish-yank-attrs             "&cyan swap"
 
 
 set mouse-cursor-scroll "no"
@@ -100,7 +100,7 @@ set git-variables-branch-icon     ": "
 set git-variables-update-interval "600000"
 
 set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
-set status-line-right             "%[fg eeeade]%(builder-status) %[]%t %5l:%-3c "
+set status-line-right             "%[fg eeeade]%(builder-status) %[] %5l:%-3c "
 set status-line-center            "%{vimish-mode-attrs}  %(vimish-mode)  %[]"
 set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc"
 
@@ -120,7 +120,7 @@ term-new
 set-custom-buffer-frame "tray" "s" 0 "h" "b" "r" .50 10 1 .05 100 "*calc *log *builder-output *term0"
 
 set-custom-buffer-frame "left" "s" 1 "v" "l" "r" .25 0 1 0.01 150 "*grep-list *ctags-find-list *find-file-list *go-menu *tree-view-list"
-set-custom-buffer-frame "man-page" "s" 0 "v" "r" "r" .25 15 0 "*man-page"
+set-custom-buffer-frame "man-page" "s" 0 "v" "r" "a" .25 15 0 "*man-page"
 
 set-custom-buffer-frame "float-middle" "f" 1 .1 .1 .8 .8 0 "*ypm-menu *ypm-output *bindings *scratch *shell-output *vars *yank"
 

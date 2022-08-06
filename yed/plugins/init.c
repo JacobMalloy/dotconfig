@@ -2,12 +2,18 @@
 
 void kammerdienerb_quit(int n_args, char **args);
 void kammerdienerb_find_cursor_word(int n_args, char **args);
+void jacobmalloy_special_buffer_prepare_focus_custom(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
 void jacobmalloy_frame_command_handler(yed_event *event);
 void jacobmalloy_frame_next(int n_args,char **args);
 
+void jacobmalloy_handle_buffer_focus(yed_event * event);
+void jacobmalloy_handle_frame_activate(yed_event * event);
+
 int go_menu_stay;
 static yed_plugin *global_self;
+static yed_frame *save_frame;
+static int in_go_menu;
 
 #define ARGS_SCRATCH_BUFF "*scratch", (BUFF_SPECIAL)
 
@@ -62,6 +68,8 @@ int yed_plugin_boot(yed_plugin *self) {
 
     YEXE("plugin-load", "ypm");
 
+    yed_plugin_set_command(self, "special-buffer-prepare-focus-custom", jacobmalloy_special_buffer_prepare_focus_custom);
+
     if (file_exists_in_PATH("rg")) {
         yed_log("init.c: found an rg executable");
         YEXE("set", "grep-prg",      "rg --vimgrep '%' | sort");
@@ -99,6 +107,12 @@ int yed_plugin_boot(yed_plugin *self) {
     h.kind = EVENT_KEY_PRESSED;
     h.fn = jacobmalloy_frame_command_handler;
     yed_plugin_add_event_handler(global_self,h);
+    h.kind = EVENT_BUFFER_PRE_FOCUS;
+    h.fn = jacobmalloy_handle_buffer_focus;
+    yed_plugin_add_event_handler(self,h);
+    h.kind = EVENT_FRAME_PRE_ACTIVATE;
+    h.fn = jacobmalloy_handle_frame_activate;
+    yed_plugin_add_event_handler(self,h);
 
     LOG_EXIT();
 
@@ -106,6 +120,9 @@ int yed_plugin_boot(yed_plugin *self) {
 }
 
 static int do_it =0;
+
+
+
 
 void jacobmalloy_frame_commands(int argc, char **argv){
     do_it=1;
@@ -226,4 +243,58 @@ void kammerdienerb_find_cursor_word(int n_args, char **args) {
     YEXE("find-prev-in-buffer");
 
     free(word);
+}
+
+
+
+void jacobmalloy_special_buffer_prepare_focus_custom(int n_args, char **args) {
+}
+
+
+
+void jacobmalloy_handle_buffer_focus(yed_event * event){
+    return;
+    static int in_buffer_focus;
+
+    if (in_buffer_focus) { return; }
+
+    in_buffer_focus = 1;
+
+    yed_log("focus\n");
+    //yed_log("%s\n",save_frame->buffer->name);
+    if(strcmp(event->buffer->name,"*go-menu")==0){
+        yed_log("go-menu\n");
+        in_go_menu=1;
+    }else{
+        if (save_frame != NULL) {
+            yed_log("prepare focus");
+            yed_log("in_go menu");
+            yed_frame** tmp_frame;
+            yed_log("here2");
+            array_traverse(ys->frames,tmp_frame){
+                if(*tmp_frame == save_frame){
+                    yed_log("here\n");
+                    yed_activate_frame(save_frame);
+                    save_frame=NULL;
+                    goto out;
+                }
+            }
+            save_frame=NULL;
+        }
+
+        in_go_menu=0;
+    }
+out:;
+    save_frame=NULL;
+    in_buffer_focus = 0;
+}
+
+
+void jacobmalloy_handle_frame_activate(yed_event * event){
+    return;
+    if(in_go_menu){
+        return;
+    }
+    yed_log("activate\n");
+    save_frame=ys->active_frame;
 }

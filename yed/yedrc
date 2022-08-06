@@ -72,10 +72,11 @@ plugin-load lang/rust
 plugin-load lang/syntax/rust
 
 
-set vimish-normal-attrs           "&pink swap"
-set vimish-insert-attrs           "&lime swap"
-set vimish-delete-attrs           "&red bold swap"
-set vimish-yank-attrs             "&cyan swap"
+set vimish-normal-attrs           "&pink.fg swap bold &white.fg bold "
+set vimish-insert-attrs           "&lime.fg swap bold &white.fg bold"
+set vimish-delete-attrs           "&red.fg swap bold &white.fg bold"
+set vimish-yank-attrs             "&blue.fg swap bold &white.fg bold"
+
 
 
 set mouse-cursor-scroll "no"
@@ -99,8 +100,8 @@ set "mouse-menu-on-nothing"   "Build 'multi builder-start builder-view-output \"
 set git-variables-branch-icon     ": "
 set git-variables-update-interval "600000"
 
-set status-line-left              " %[fg eeeade]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
-set status-line-right             "%[fg eeeade]%(builder-status) %[] %5l:%-3c "
+set status-line-left              " %[&white.fg]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
+set status-line-right             "%[&white.fg]%(builder-status) %[] %5l:%-3c "
 set status-line-center            "%{vimish-mode-attrs}  %(vimish-mode)  %[]"
 set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc"
 

@@ -1,6 +1,6 @@
 #include <yed/plugin.h>
 
-void kammerdienerb_quit(int n_args, char **args);
+void jacobmalloy_quit(int n_args, char **args);
 void kammerdienerb_find_cursor_word(int n_args, char **args);
 void jacobmalloy_special_buffer_prepare_focus_custom(int n_args, char **args);
 void jacobmalloy_frame_commands(int argc, char **argv);
@@ -99,8 +99,8 @@ int yed_plugin_boot(yed_plugin *self) {
         YEXE("style", env_style);
     }
 
-    yed_plugin_set_command(self, "q",  kammerdienerb_quit);
-    yed_plugin_set_command(self, "Q",  kammerdienerb_quit);
+    yed_plugin_set_command(self, "q",  jacobmalloy_quit);
+    yed_plugin_set_command(self, "Q",  jacobmalloy_quit);
     yed_log("\ninit.c: added overrides for 'q'/'Q' and 'wq'/'Wq' commands");
 
     yed_event_handler h;
@@ -191,37 +191,39 @@ void jacobmalloy_frame_next(int n_args,char **args){
     yed_activate_frame(frame);
 }
 
-void kammerdienerb_quit(int n_args, char **args) {
-    yed_frame      *frame;
-    int             n_frames;
-    yed_frame_tree *tree;
+void jacobmalloy_quit(int n_args, char **args) {
+    yed_frame      *tmp_frame;
+    int non_named_count;
+    int n_frames;
 
-    /* 1 or 0 frames, just quit. */
-    n_frames = array_len(ys->frames);
-    if ((frame = ys->active_frame) == NULL
-    ||  n_frames == 1) {
+    if(ys->active_frame==NULL){
         YEXE("quit");
         return;
     }
 
-    /* If we aren't in a 2-frame split situation, just delete the frame. */
-    tree = frame->tree;
-    if (n_frames != 2
-    ||  tree->parent == NULL) {
-        YEXE("frame-delete");
+    non_named_count=0;
+    array_traverse(ys->frames,tmp_frame){
+        if(tmp_frame->name){
+            non_named_count++;
+        }
+    }
+
+    if(!ys->active_frame->name){
+        if(non_named_count==1){
+            YEXE("quit");
+        }else{
+            YEXE("frame-delete");
+            return;
+        }
+    }
+
+    if(non_named_count==0){
+        YEXE("quit");
         return;
     }
 
-    /*
-     * Okay, it's a split.
-     * If this frame is the left child, quit.
-     * Otherwise, delete the frame.
-     */
-    if (tree == tree->parent->child_trees[0]) {
-        YEXE("quit");
-    } else {
-        YEXE("frame-delete");
-    }
+    YEXE("frame-delete");
+
 }
 
 void kammerdienerb_find_cursor_word(int n_args, char **args) {

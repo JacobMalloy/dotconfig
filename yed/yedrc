@@ -12,7 +12,7 @@ plugin-load 'styles/casey'
 
 
 ### @variables ###
-set completer-auto                "no"
+set completer-auto                "yes"
 set completer-popup               "yes"
 set tab-width                     4
 set latex-comp-prg                "xelatex -halt-on-error --interaction=nonstopmode '%'"
@@ -103,7 +103,7 @@ set git-variables-update-interval "600000"
 set status-line-left              " %[&white.fg]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
 set status-line-right             "%[&white.fg]%(builder-status) %[] %5l:%-3c "
 set status-line-center            "%{vimish-mode-attrs}  %(vimish-mode)  %[]"
-set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc"
+set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc ~/.config/yed/ypm_list"
 
 ### @aliased commands ###
 alias "qa" quit

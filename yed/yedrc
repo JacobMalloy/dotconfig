@@ -63,6 +63,13 @@ vimish-bind  insert  "j j"        vimish-exit-insert
 vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 vimish-bind normal   "ctrl-t"     toggle-term-mode
 
+
+
+vimish-bind normal   "fn-1"     term-open 1
+vimish-bind normal   "fn-2"     term-open 2
+vimish-bind normal   "fn-3"     term-open 3
+
+
 plugin-load universal_clipboard
 set universal-copy-on-yank "no"
 
@@ -116,7 +123,6 @@ alias "WQ" "wq"
 alias "wQ" "wq"
 alias "Wq" "wq"
 
-term-new
 
 set-custom-buffer-frame "tray" "s" 0 "h" "b" "r" .50 10 1 .05 100 "*calc *log *builder-output *term0"
 

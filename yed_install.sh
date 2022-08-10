@@ -7,7 +7,7 @@ YPM_UPDATE="no"
 CORE_INSTALL="no"
 PLUGINS_INSTALL="yes"
 
-PLUGIN_OPTO="-O2"
+PLUGIN_OPTO="-O3"
 YED_EXTRA_FLAGS=""
 
 for var in "$@"
@@ -42,7 +42,7 @@ if [ $CORE_INSTALL == "yes" ]; then
 fi
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
-C_FLAGS="-O2 -shared -fPIC -Wall $(yed --print-cflags)"
+C_FLAGS="${PLUGIN_OPTO} -shared -fPIC -Wall $(yed --print-cflags)"
 CC=gcc
 LD_FLAGS="$(yed --print-ldflags)"
 

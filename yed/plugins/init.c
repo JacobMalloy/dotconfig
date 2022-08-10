@@ -194,7 +194,6 @@ void jacobmalloy_frame_next(int n_args,char **args){
 void jacobmalloy_quit(int n_args, char **args) {
     yed_frame      *tmp_frame;
     int non_named_count;
-    int n_frames;
 
     if(ys->active_frame==NULL){
         YEXE("quit");

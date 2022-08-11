@@ -920,16 +920,6 @@
 	<false/>
 	<key>PointerActions</key>
 	<dict>
-		<key>Button,1,1,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kContextMenuPointerAction</string>
-		</dict>
-		<key>Button,2,1,,</key>
-		<dict>
-			<key>Action</key>
-			<string>kPasteFromClipboardPointerAction</string>
-		</dict>
 		<key>Gesture,ThreeFingerSwipeDown,,</key>
 		<dict>
 			<key>Action</key>
@@ -959,10 +949,14 @@
 	<false/>
 	<key>StretchTabsToFillBar</key>
 	<false/>
+	<key>TabStyleWithAutomaticOption</key>
+	<integer>4</integer>
 	<key>UnderlineCursorHeight</key>
 	<real>2</real>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
+	<key>UseSystemCursorWhenPossible</key>
+	<true/>
 	<key>VerticalBarCursorWidth</key>
 	<real>3</real>
 	<key>VisualIndicatorForEsc</key>

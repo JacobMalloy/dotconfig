@@ -62,3 +62,6 @@ terminal
 custom_frames
 tree_view
 style_picker
+lang/glsl
+lang/syntax/glsl
+extension_mapper

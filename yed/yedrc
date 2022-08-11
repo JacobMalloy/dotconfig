@@ -131,6 +131,9 @@ set-custom-buffer-frame "man-page" "s" 0 "v" "r" "a" .25 15 0 "*man-page"
 
 set-custom-buffer-frame "float-middle" "f" 1 .1 .1 .8 .8 0 "*ypm-menu *ypm-output *bindings *scratch *shell-output *vars *yank"
 
+map-extension "vs" "GLSL"
+map-extension "fs" "GLSL"
+
 ### @project ###
 # Load directory-specific rc file.
 yedrc-load ".yedrc"

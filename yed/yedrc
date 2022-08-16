@@ -133,6 +133,7 @@ set-custom-buffer-frame "float-middle" "f" 1 .1 .1 .8 .8 0 "*ypm-menu *ypm-outpu
 
 map-extension "vs" "GLSL"
 map-extension "fs" "GLSL"
+map-extension "gs" "GLSL"
 
 ### @project ###
 # Load directory-specific rc file.

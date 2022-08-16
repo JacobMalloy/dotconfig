@@ -140,6 +140,8 @@ map-extension "vs" "GLSL"
 map-extension "fs" "GLSL"
 map-extension "gs" "GLSL"
 
+set terminal-auto-term-mode "off"
+
 ### @project ###
 # Load directory-specific rc file.
 yedrc-load ".yedrc"

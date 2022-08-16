@@ -124,6 +124,10 @@ alias "wQ" "wq"
 alias "Wq" "wq"
 
 
+set auto-paren-jump-word "no"
+set auto-dquote-jump-word "no"
+set auto-quote-jump-word "no"
+
 set-custom-buffer-frame "tray" "s" 0 "h" "b" "r" .50 10 1 .05 100 "*calc *log *builder-output *term0"
 
 set-custom-buffer-frame "left" "s" 1 "v" "l" "r" .25 0 1 0.01 150 "*grep-list *ctags-find-list *find-file-list *go-menu *tree-view-list"

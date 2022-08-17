@@ -27,7 +27,7 @@ set ctags-compl "yes"
 set completer-sources "word tags"
 
 ### @style ###
-style-term-bg zulu
+style-term-bg dracula
 
 ### @keybindings ###
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle
@@ -63,7 +63,6 @@ vimish-bind  insert  "j j"        vimish-exit-insert
 vimish-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 vimish-bind normal   "ctrl-t"     toggle-term-mode
 
-term-bind "j j" toggle-term-mode
 
 
 vimish-bind normal   "fn-1"     term-open 1
@@ -124,10 +123,6 @@ alias "WQ" "wq"
 alias "wQ" "wq"
 alias "Wq" "wq"
 
-
-set auto-paren-jump-word "no"
-set auto-dquote-jump-word "no"
-set auto-quote-jump-word "no"
 
 set-custom-buffer-frame "tray" "s" 0 "h" "b" "r" .50 10 1 .05 100 "*calc *log *builder-output *term0"
 

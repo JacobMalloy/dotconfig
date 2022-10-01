@@ -56,6 +56,7 @@ int main(int argc, char **argv){
     initialize_string(&my_string,argc*10);
     for(int i =0;i<argc;i++){
         string_append(&my_string,argv[i]);
+        string_append(&my_string," ");
     }
     string_loc = my_string.data;
 

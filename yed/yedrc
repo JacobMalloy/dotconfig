@@ -46,7 +46,7 @@ vimish-bind  normal  "<"          unindent
 vimish-bind  normal  "spc g"      grep
 vimish-bind  normal  "spc f"      multi jump-stack-push find-file
 vimish-bind  normal  "spc a l"    command-prompt "align "
-vimish-bind  normal  "ctrl-b"     multi "write-buffer" "builder-start" "builder-view-output"
+vimish-bind  normal  "ctrl-b"     multi "write-buffer" "builder-view-output" "builder-start" "special-buffer-prepare-unfocus *builder-output"
 vimish-bind  normal  "E E"        builder-jump-to-error
 vimish-bind  normal  "spc t"      multi jump-stack-push ctags-find
 vimish-bind  normal  "T T"        multi jump-stack-push ctags-jump-to-definition

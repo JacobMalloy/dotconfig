@@ -64,3 +64,4 @@ style_picker
 lang/glsl
 lang/syntax/glsl
 extension_mapper
+style_term_use_bg

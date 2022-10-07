@@ -225,6 +225,8 @@
 	<string>3D184A58-F1BF-43FC-B8E8-16C4398C1E0F</string>
 	<key>DisableMetalWhenIdle</key>
 	<true/>
+	<key>DisablePotentiallyInsecureEscapeSequences</key>
+	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideActivityIndicator</key>
@@ -891,7 +893,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.15309175531914893</real>
+			<real>0.10155418882978674</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -951,6 +953,11 @@
 	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+		<string>Jobs</string>
+	</array>
 	<key>UnderlineCursorHeight</key>
 	<real>2</real>
 	<key>UseLionStyleFullscreen</key>

@@ -26,7 +26,7 @@ set ctags-compl "yes"
 set completer-sources "word tags"
 
 ### @style ###
-style-term-bg dracula
+style-term-bg river
 
 ### @keybindings ###
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle

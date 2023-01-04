@@ -427,7 +427,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>25.397780917553192</real>
+			<real>25.840350731382987</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -893,7 +893,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.10155418882978674</real>
+			<real>0.35056515957446754</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -968,6 +968,8 @@
 	<real>3</real>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

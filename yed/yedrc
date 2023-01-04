@@ -21,9 +21,10 @@ set cursor-line                   "yes"
 set vimish-insert-no-cursor-line  "yes"
 set cursor-word-hl-idle-threshold 1500
 set builder-popup-rg              "yes"
-set use-ctags "no"
+set use-ctags "yes"
 set ctags-compl "yes"
 set completer-sources "word tags"
+set builder-build-command           './build.sh'
 
 ### @style ###
 style-term-bg river

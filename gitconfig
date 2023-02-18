@@ -2,6 +2,7 @@
 	name = Jacob Malloy
 	useConfigOnly = true
 	signingkey = E0989E89DDE1BCA5
+	email = jmalloy1@vols.utk.edu
 [core]
 	excludesfile = ~/.gitignore#$HOME/.gitignore
 	editor = vim

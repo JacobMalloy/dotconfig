@@ -210,6 +210,7 @@ void jacobmalloy_quit(int n_args, char **args) {
     if(!ys->active_frame->name){
         if(non_named_count<=1){
             YEXE("quit");
+            return;
         }else{
             YEXE("frame-delete");
             return;

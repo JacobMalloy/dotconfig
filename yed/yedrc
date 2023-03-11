@@ -27,7 +27,7 @@ set completer-sources "word tags"
 set builder-build-command           './build.sh'
 
 ### @style ###
-style-term-bg river
+style casey
 
 ### @keybindings ###
 vimish-bind  normal  "ctrl-c ctrl-c"    comment-toggle

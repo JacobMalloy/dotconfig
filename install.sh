@@ -84,6 +84,11 @@ rm -r $HOME/.config/kitty > /dev/null 2>&1
 ln -sf $DIR/config/kitty $HOME/.config/kitty
 
 
+echo "installing wez term"
+rm -r $HOME/.config/wezterm > /dev/null 2>&1
+ln -sf $DIR/config/wezterm $HOME/.config/wezterm
+
+
 if [ "${YED}" != "no" ]; then
     ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE
 fi

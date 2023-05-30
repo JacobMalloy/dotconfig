@@ -962,11 +962,15 @@
 	<real>2</real>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
+	<key>UseMetal</key>
+	<true/>
 	<key>UseSystemCursorWhenPossible</key>
 	<true/>
 	<key>VerticalBarCursorWidth</key>
 	<real>3</real>
 	<key>VisualIndicatorForEsc</key>
+	<false/>
+	<key>disableMetalWhenUnplugged</key>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>

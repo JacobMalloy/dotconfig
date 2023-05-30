@@ -1,5 +1,6 @@
 if [[ $(uname) == 'Darwin' ]];then
-    export PATH=/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin/:/opt/homebrew/sbin:$PATH
+    #export PATH=/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin/:/opt/homebrew/sbin:$PATH
+    export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
     brew --prefix openjdk >/dev/null 2>&1 && export JAVA_HOME=$(brew --prefix openjdk) && export PATH=$JAVA_HOME/bin:$PATH
 fi
 

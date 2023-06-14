@@ -12,14 +12,23 @@ end
 
 -- This is where you actually apply your config choices
 
+config.font = wezterm.font 'Victor Mono'
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+config.font_size = 12
 
 
 config.color_scheme = 'Dark+'
+config.default_cursor_style = "SteadyBar"
+config.colors={
+    cursor_border = '#EE4B2B',
+}
 
 config.front_end = 'WebGpu'
+-- config.front_end = 'OpenGL'
 
 
-config.window_background_opacity = 0.3
+config.window_background_opacity = 0.7
+config.text_background_opacity=0.7
 config.macos_window_background_blur = 20
 -- config.win32_system_backdrop = "Acrylic"
 

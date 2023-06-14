@@ -41,7 +41,6 @@ shell_run
 style_pack
 vimish
 yedrc
-auto_paren
 loc_history
 style_use_term_bg
 go_menu

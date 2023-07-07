@@ -68,3 +68,7 @@ yule_2022
 yule_2021
 lang/csharp
 lang/syntax/csharp
+lang/scheme
+lang/syntax/scheme
+lang/go
+lang/syntax/go

@@ -19,8 +19,16 @@ config.font_size = 12
 
 config.color_scheme = 'Dark+'
 config.default_cursor_style = "SteadyBar"
+--config.color_schemes={
+--  ['Dark+']={
+--    --cursor_border = {Color = '#ff0000'},
+--    cursor_border = '#ff0000',
+--    cursor_fg = '#ff0000',
+--  }
+--}
 config.colors={
-    cursor_border = '#EE4B2B',
+    cursor_border = '#ff0000',
+    cursor_fg = '#ff0000',
 }
 
 config.front_end = 'WebGpu'
@@ -34,6 +42,16 @@ config.macos_window_background_blur = 20
 
 
 config.audible_bell = "Disabled"
+
+
+
+if string.find(wezterm.target_triple,"windows") then
+  config.window_background_opacity = .2
+  config.text_background_opacity=config.window_background_opacity;
+  config.win32_system_backdrop = "Acrylic"  
+end
+
+
 
 -- and finally, return the configuration to wezterm
 return config

@@ -10,11 +10,18 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+
+if string.find(wezterm.target_triple,"darwin") then
+    print("macos")
+elseif string.find(wezterm.target_triple,"win32") then
+    print("windows")
+end
+
 -- This is where you actually apply your config choices
 
 config.font = wezterm.font 'Victor Mono'
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-config.font_size = 12
+config.font_size = 12.5
 
 
 config.color_scheme = 'Dark+'

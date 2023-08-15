@@ -39,7 +39,6 @@ profile
 scroll_buffer
 shell_run
 style_pack
-vimish
 yedrc
 loc_history
 style_use_term_bg
@@ -72,3 +71,4 @@ lang/scheme
 lang/syntax/scheme
 lang/go
 lang/syntax/go
+xul

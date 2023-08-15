@@ -2,12 +2,16 @@
 
 /*commands*/
 static void write_all(int argc, char **argv);
+static void write_quit(int argc, char **argv);
+static void write_quit_all(int argc, char **argv);
 static void log_unsaved(int argc, char **argv);
 /*end_commands*/
 
 //set the commands in this block so that command creation is uniform
 void create_commands(yed_plugin *self){
     yed_plugin_set_command(self,"write-all",write_all);
+    yed_plugin_set_command(self,"write-quit",write_quit);
+    yed_plugin_set_command(self,"write-quit-all",write_quit_all);
     yed_plugin_set_command(self,"log-unsaved",log_unsaved);
 }
 
@@ -38,6 +42,17 @@ static void write_all(int argc, char **argv){
     }
 
 }
+
+static void write_quit(int argc,char **argv){
+    YEXE("write-buffer");
+    YEXE("quit");
+}
+
+static void write_quit_all(int argc,char **argv){
+    YEXE("write-all");
+    YEXE("quit");
+}
+
 static void log_unsaved(int argc, char **argv){
     yed_buffer *buffer;
     tree_it( yed_buffer_name_t, yed_buffer_ptr_t ) buffer_iterator;

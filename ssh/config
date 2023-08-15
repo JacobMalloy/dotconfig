@@ -42,6 +42,10 @@ Host desktop
     Hostname 10.6.0.5
     User sjake
 Host plex-dvr
+    Hostname 10.0.0.75
+    User jmalloy
+    ForwardAgent yes
+Host plex-dvr-wireguard
     Hostname 10.6.0.7
     User jmalloy
     ForwardAgent yes

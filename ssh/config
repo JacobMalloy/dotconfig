@@ -45,10 +45,6 @@ Host plex-dvr
     Hostname 10.6.0.7
     User jmalloy
     ForwardAgent yes
-Host com
-    Hostname com1642.eecs.utk.edu
-    User jmalloy1
-    ForwardAgent yes
 Host chile
     Hostname chile.eecs.utk.edu
     User jmalloy1
@@ -73,3 +69,12 @@ Host com1643
     Hostname com1643.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host com1642
+    Hostname com1642.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes
+Host com1696
+    Hostname com1696.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes
+

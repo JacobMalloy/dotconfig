@@ -62,10 +62,14 @@ xul-bind normal   "ctrl-f"     jacobmalloy-frame-commands
 xul-bind normal   "ctrl-t"     toggle-term-mode
 
 
+xul-bind normal   "fn-1"     term-open 1
+xul-bind normal   "fn-2"     term-open 2
+xul-bind normal   "fn-3"     term-open 3
 
 
 
-# vimish-bind normal   "fn-1"     term-open 1
+
+# xul-bind normal   "fn-1"     term-open 1
 # vimish-bind normal   "fn-2"     term-open 2
 # vimish-bind normal   "fn-3"     term-open 3
 

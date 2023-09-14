@@ -29,14 +29,15 @@ config.default_cursor_style = "SteadyBar"
 
 config.colors={
     cursor_bg = '#ff2040',
+    background = 'hsv(0,0%,2%)'
 }
 
 config.front_end = 'WebGpu'
 -- config.front_end = 'OpenGL'
 
 
-config.window_background_opacity = 0.7
-config.text_background_opacity=0.7
+config.window_background_opacity = 0.8
+config.text_background_opacity=0.5
 config.macos_window_background_blur = 20
 -- config.win32_system_backdrop = "Acrylic"
 

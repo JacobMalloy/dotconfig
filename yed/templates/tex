@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{layout}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{titlesec}
+
+%\titleformat*{\section}{}
+%\titleformat*{\subsection}{}
+
+
+\newtheorem*{thm}{Theorem}
+\newtheorem*{claim}{Claim}
+%\newproof{proof}{Proof}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\newenvironment{myproof}[1][\proofname]{%
+  \begin{proof}[#1]$ $\par\nobreak\ignorespaces
+}{%
+  \end{proof}
+}
+
+\usetikzlibrary{automata, positioning, arrows}
+
+\geometry{margin=1in}
+
+\title{Place Holder Title}
+\author{Jacob Malloy - jmalloy}
+
+\begin{document}
+
+\maketitle
+
+
+\end{document}

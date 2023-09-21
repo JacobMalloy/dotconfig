@@ -56,6 +56,8 @@ preexec() {
 #    cmd_start=$(date +%s%N)
 }
 
+function yeddiff { yed -c "diff $1 $2" ; }
+
 precmd() {
   vcs_info
 #  local cmd_end=$(date +%s%N)

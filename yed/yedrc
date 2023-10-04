@@ -154,7 +154,7 @@ set git-variables-branch-icon     ": "
 set git-variables-update-interval "600000"
 
 set status-line-left              " %[&white.fg]%(git-variables-repo-name)%(git-variables-branch)%[] %f %b"
-set status-line-right             "%[&white.fg]%(builder-status) %[] %5l:%-3c "
+set status-line-right             "%[&white.fg]%(builder-status) %F %[] %5l:%-3c "
 set status-line-center            "%{vimish-mode-attrs}  %(vimish-mode)  %[]"
 set go-menu-persistent-items      ".yedrc ~/.config/yed/yedrc ~/.config/yed/ypm_list"
 
@@ -183,6 +183,16 @@ set-custom-buffer-frame "float-middle" "f" 1 .1 .1 .8 .8 0 "*ypm-menu *ypm-outpu
 map-extension "vs" "GLSL"
 map-extension "fs" "GLSL"
 map-extension "gs" "GLSL"
+
+set lsp-debug-log "ON"
+
+lsp-define-server CLANGD clangd C C++
+lsp-define-server TEXLAB "texlab" LaTeX
+lsp-define-server PYTHON "pylsp" Python
+lsp-define-server RUST_ANALYZER "rust-analyzer" Rust
+
+set lsp-diagnostics-show-message "cursor"
+
 
 set terminal-auto-term-mode "off"
 

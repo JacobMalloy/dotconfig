@@ -72,3 +72,6 @@ lang/syntax/scheme
 lang/go
 lang/syntax/go
 xul
+lsp
+lsp_diagnostics
+lsp_info_popup

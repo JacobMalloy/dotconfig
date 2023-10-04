@@ -25,7 +25,7 @@ mkdir -p ${YED_CONFIG_DIRECTORY}/ypm/plugins/styles
 for word in $(<../ypm_list); do
     if [ -d "./ypm_plugins/${word}" ]; then
         echo "Cloning building and installing ${word}"
-        bash -c "git submodule update --force ./ypm_plugins/${word} && cd ./ypm_plugins/${word} && ./build.sh && mv ./*.so ${YED_CONFIG_DIRECTORY}/ypm/plugins/${word}.so" &
+        bash -c "git submodule update --force ./ypm_plugins/${word} && cd ./ypm_plugins/${word} && ./build.sh && mv ./*.so ${YED_CONFIG_DIRECTORY}/ypm/plugins/${word}.so && cp -rf ./*.dSYM ${YED_CONFIG_DIRECTORY}/ypm/plugins/" &
     fi
 done
 

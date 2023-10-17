@@ -50,6 +50,9 @@ if string.find(wezterm.target_triple,"windows") then
   config.window_background_opacity = .2
   config.text_background_opacity=config.window_background_opacity;
   config.win32_system_backdrop = "Acrylic"
+elseif string.find(wezterm.target_triple,"linux") then
+  config.window_background_opacity = 0.85
+  config.text_background_opacity=config.window_background_opacity;
 end
 
 

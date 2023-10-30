@@ -79,10 +79,12 @@ int yed_plugin_boot(yed_plugin *self) {
         YEXE("set", "find-file-prg", "fzf --filter='%'");
     }
 
+#if 0
     if (getenv("DISPLAY") && file_exists_in_PATH("notify-send")) {
         yed_log("init.c: using desktop notifications for builder");
         YEXE("set", "builder-notify-command", "notify-send -i utilities-terminal yed %");
     }
+#endif
 
     /* Load my yedrc file. */
     path = get_config_item_path("yedrc");

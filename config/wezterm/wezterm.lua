@@ -27,7 +27,7 @@ config.font = wezterm.font_with_fallback {
      'Noto Color Emoji',
  }
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-config.font_size = 13
+config.font_size = 16
 
 
 config.color_scheme = 'Dark+'

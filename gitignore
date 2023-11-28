@@ -61,3 +61,4 @@ cscope*
 .yed_ctags_*
 
 *:Zone.Identifier
+compile_commands.json

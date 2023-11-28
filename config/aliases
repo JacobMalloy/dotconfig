@@ -1,5 +1,5 @@
-alias sudo='sudo -E '
-alias build-hotspot='(cd $my_jdk && make hotspot)'
+#alias sudo='sudo -E '
+#alias build-hotspot='(cd $my_jdk && make hotspot)'
 alias ls="/bin/ls -CF --color=always"
 alias ll="ls -la"
 alias set-my-jdk='export my_jdk=$(pwd) && alias my-java=$my_jdk/build/linux-x86_64-server-release/jdk/bin/java'

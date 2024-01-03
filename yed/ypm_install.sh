@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 YED_CONFIG_DIRECTORY=$(yed --print-config-dir)
 

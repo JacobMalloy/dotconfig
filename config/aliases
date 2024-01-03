@@ -1,8 +1,8 @@
 #alias sudo='sudo -E '
 #alias build-hotspot='(cd $my_jdk && make hotspot)'
-alias ls="/bin/ls -CF --color=always"
+#alias ls="/bin/ls -CF --color=always"
 alias ll="ls -la"
-alias set-my-jdk='export my_jdk=$(pwd) && alias my-java=$my_jdk/build/linux-x86_64-server-release/jdk/bin/java'
+#alias set-my-jdk='export my_jdk=$(pwd) && alias my-java=$my_jdk/build/linux-x86_64-server-release/jdk/bin/java'
 #alias diff="diff --color=auto"
 alias set-title='printf "\033]0;%s\007"'
 alias send-notification='printf "\x1b]99;;%s\x1b\\"'

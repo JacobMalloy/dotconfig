@@ -70,6 +70,7 @@
      spotify
      discord
      plex-media-player
+     okular
   ]) ++ (with pkgs.gnomeExtensions; [
       pop-shell
   ]);

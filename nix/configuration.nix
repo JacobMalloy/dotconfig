@@ -94,7 +94,7 @@
 
   ]) ++ (with pkgs.python311Packages; [
       numpy
-      jupyter-core
+      jupyter
       pandas
       sympy
   ]);

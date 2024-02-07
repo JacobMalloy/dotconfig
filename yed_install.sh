@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -43,7 +43,9 @@ fi
 
 # YED_INSTALLATION_PREFIX="${HM}/.local"
 C_FLAGS="${PLUGIN_OPTO} -shared -fPIC -Wall $(yed --print-cflags)"
+CPP_FLAGS="${PLUGIN_OPTO} -shared -fPIC -Wall $(yed --print-cppflags)"
 CC=gcc
+CPP=g++
 LD_FLAGS="$(yed --print-ldflags)"
 
 if [ $(uname) = "Darwin" ]; then
@@ -67,6 +69,16 @@ if [ $PLUGINS_INSTALL == "yes" ]; then
 
         mkdir -p ${PLUG_DIR}
         ${CC} ${f} ${C_FLAGS} ${LD_FLAGS} -o ${PLUG_FULL_PATH} &
+        pids+=($!)
+    done
+
+    for f in $(find ${YED_PLUGIN_DIR} -name "*.cpp"); do
+        echo "Compiling ${f/${YED_PLUUGIN_DIR}/.yed} and installing."
+        PLUG_DIR=$(dirname ${f/${YED_PLUGIN_DIR}/${HOME_YED_DIR}})
+        PLUG_FULL_PATH=${PLUG_DIR}/$(basename $f ".cpp").so
+
+        mkdir -p ${PLUG_DIR}
+        ${CPP} --std=c++17 ${f} ${CPP_FLAGS} ${LD_FLAGS} -o ${PLUG_FULL_PATH} &
         pids+=($!)
     done
 

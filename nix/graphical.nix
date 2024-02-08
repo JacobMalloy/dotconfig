@@ -71,6 +71,7 @@
      discord
      plex-media-player
      okular
+     inkscape
   ]) ++ (with pkgs.gnomeExtensions; [
       pop-shell
   ]);

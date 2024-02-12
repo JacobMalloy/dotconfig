@@ -82,6 +82,7 @@ if [[ -z "${SSH_AUTH_SOCK}" ]]; then
     trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
 fi
 
+umask 007
 
 #export SSH_AUTH_SOCK="~/.ssh/ssh_auth_sock"
 

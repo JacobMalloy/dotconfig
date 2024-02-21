@@ -14,6 +14,8 @@
       jupyter
       pandas
       sympy
+      pip
+      notebook
   ]);
 
 

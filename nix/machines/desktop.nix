@@ -2,20 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
   imports = [
-      nvidia.nix
-      graphical.nix
-      dev_envs/c.nix
-      dev_envs/python.nix
-      dev_envs/perf.nix
-      dev_envs/latex.nix
-      dev_envs/tools.nix
+      ../machine_hardware/desktop.nix
+      ../nvidia.nix
+      ../graphical.nix
+      ../dev_envs/c.nix
+      ../dev_envs/python.nix
+      ../dev_envs/perf.nix
+      ../dev_envs/latex.nix
+      ../dev_envs/tools.nix
     ];
 
 
@@ -68,26 +69,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bbb9bce2-1a1a-4f12-9140-582ab3e1a818";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/343A-6FE7";
-      fsType = "vfat";
-    };
-
-  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -97,23 +79,7 @@
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi/"; # ← use the same mount point here.
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      #efiInstallAsRemovable = true; # in case canTouchEfiVariables doesn't work for your system
-      device = "nodev";
-      useOSProber = true;
-      default = "saved";
-    };
-  };
 
   #need this for dual booting windows
   time.hardwareClockInLocalTime = true;

@@ -10,6 +10,7 @@
   environment.systemPackages = (with pkgs; [
      texliveFull
      ghostscript
+     okular
   ]);
 
 

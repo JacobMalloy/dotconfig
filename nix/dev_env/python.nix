@@ -6,17 +6,17 @@
 
 {
 
-
-  environment.systemPackages = (with pkgs; [
-     python311
-  ]) ++ (with pkgs.python311Packages; [
-      numpy
-      jupyter
+environment.systemPackages = with pkgs; [
+    (python311.withPackages (p: with p; [
       pandas
-      sympy
+      jupyter
       pip
       notebook
-  ]);
+      numpy
+      scipy
+      sympy
+    ]))
+  ];
 
 
 

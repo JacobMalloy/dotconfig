@@ -12,11 +12,11 @@
       ../machine_hardware/desktop.nix
       ../nvidia.nix
       ../graphical.nix
-      ../dev_envs/c.nix
-      ../dev_envs/python.nix
-      ../dev_envs/perf.nix
-      ../dev_envs/latex.nix
-      ../dev_envs/tools.nix
+      ../dev_env/c.nix
+      ../dev_env/python.nix
+      ../dev_env/perf.nix
+      ../dev_env/latex.nix
+      ../dev_env/tools.nix
     ];
 
 

@@ -9,9 +9,13 @@
     experimental-features = nix-command flakes
   '';
   imports = [
+      ../users/jmalloy.nix
       ../machine_hardware/desktop.nix
       ../nvidia.nix
+      ../zsh.nix
+      ../locale.nix
       ../graphical.nix
+      ../services/tailscale.nix
       ../dev_env/c.nix
       ../dev_env/python.nix
       ../dev_env/perf.nix
@@ -20,51 +24,13 @@
     ];
 
 
-  programs.zsh.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jmalloy = {
-    isNormalUser = true;
-    description = "Jacob Malloy";
-    shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   documentation.dev.enable = true;
 
-  services.tailscale.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -95,16 +61,10 @@
     enableSSHSupport = true;
   };
 
-  environment.sessionVariables = rec {
-#    NVD_BACKEND = "direct";
-#    LIBVA_DRIVER_NAME = "nvidia";
-#    MOZ_DISABLE_RDD_SANDBOX = "1";
-  };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -11,6 +11,7 @@
     vim
     ripgrep
     ctags
+    htop
   ]);
 
 

@@ -12,6 +12,15 @@
     ripgrep
     ctags
     htop
+    curl
+    perl
+    openssl
+    bash
+    coreutils-full
+    grep
+    file
+    less
+    gawk
   ]);
 
 

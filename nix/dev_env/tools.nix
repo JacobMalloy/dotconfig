@@ -17,7 +17,7 @@
     openssl
     bash
     coreutils-full
-    grep
+    gnugrep
     file
     less
     gawk

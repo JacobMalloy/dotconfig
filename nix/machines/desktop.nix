@@ -15,7 +15,8 @@
       ../nvidia.nix
       ../zsh.nix
       ../locale.nix
-      ../graphical.nix
+      ../graphical/general.nix
+      ../graphical/gnome.nix
       ../services/tailscale.nix
       ../dev_env/c.nix
       ../dev_env/python.nix

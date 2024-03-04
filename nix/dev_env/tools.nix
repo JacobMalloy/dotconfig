@@ -21,6 +21,10 @@
     file
     less
     gawk
+    wget
+    rustup
+    mosh
+    imagemagick
   ]);
 
 

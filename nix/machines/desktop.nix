@@ -23,6 +23,7 @@
       ../dev_env/perf.nix
       ../dev_env/latex.nix
       ../dev_env/tools.nix
+      ../services/ssh.nix
     ];
 
   #need this for dual booting windows

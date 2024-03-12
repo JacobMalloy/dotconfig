@@ -17,6 +17,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.interfaces.enp6s0.wakeOnLan.enable = true;
 
 
 }

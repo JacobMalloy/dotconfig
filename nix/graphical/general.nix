@@ -43,6 +43,7 @@
      plex-media-player
      okular
      inkscape
+     vlc
   ]);
 
 

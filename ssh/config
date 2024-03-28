@@ -41,6 +41,9 @@ Host uruguay
 Host desktop
     Hostname 10.6.0.5
     User sjake
+Host desktop-tailscale
+    Hostname 100.127.239.15
+    User jmalloy
 Host plex-dvr
     Hostname 10.0.0.75
     User jmalloy
@@ -81,4 +84,3 @@ Host com1696
     Hostname com1696.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
-

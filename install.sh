@@ -88,6 +88,14 @@ echo "installing wez term"
 rm -r $HOME/.config/wezterm > /dev/null 2>&1
 ln -sf $DIR/config/wezterm $HOME/.config/wezterm
 
+echo "installing perf config"
+rm -r $HOME/.perfconfig > /dev/null 2>&1
+ln -sf $DIR/perfconfig $HOME/.perfconfig
+
+echo "installing perf config"
+rm -r $HOME/.clang-format > /dev/null 2>&1
+ln -sf $DIR/clang-format $HOME/.clang-format
+
 
 if [ "${YED}" != "no" ]; then
     ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE

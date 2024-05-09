@@ -62,3 +62,5 @@ cscope*
 
 *:Zone.Identifier
 compile_commands.json
+*.bbl
+*.blg

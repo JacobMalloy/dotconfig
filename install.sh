@@ -92,7 +92,7 @@ echo "installing perf config"
 rm -r $HOME/.perfconfig > /dev/null 2>&1
 ln -sf $DIR/perfconfig $HOME/.perfconfig
 
-echo "installing perf config"
+echo "installing clang-format config"
 rm -r $HOME/.clang-format > /dev/null 2>&1
 ln -sf $DIR/clang-format $HOME/.clang-format
 

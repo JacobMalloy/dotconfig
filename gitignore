@@ -64,3 +64,5 @@ cscope*
 compile_commands.json
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls

@@ -88,6 +88,10 @@ echo "installing wez term"
 rm -r $HOME/.config/wezterm > /dev/null 2>&1
 ln -sf $DIR/config/wezterm $HOME/.config/wezterm
 
+echo "installing neovim"
+rm -r $HOME/.config/nvim > /dev/null 2>&1
+ln -sf $DIR/config/nvim $HOME/.config/nvim
+
 echo "installing perf config"
 rm -r $HOME/.perfconfig > /dev/null 2>&1
 ln -sf $DIR/perfconfig $HOME/.perfconfig

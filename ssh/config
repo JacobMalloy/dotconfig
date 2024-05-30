@@ -84,3 +84,7 @@ Host com1696
     Hostname com1696.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
+Host intel
+    Hostname ssh-iam.intel-research.net
+    User jmalloy1
+    ForwardAgent yes

@@ -20,14 +20,14 @@ end
 -- This is where you actually apply your config choices
 
 config.font = wezterm.font_with_fallback {
-     'Fantasque Sans Mono',
-     'Victor Mono',
-     'Fira Code',
+     'Monaspace Neon',
+--     'Fantasque Sans Mono',
+--     'Victor Mono',
      'Jetbrains Mono',
      'Noto Color Emoji',
  }
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-config.font_size = 16
+config.font_size = 15
 
 
 config.color_scheme = 'Dark+'

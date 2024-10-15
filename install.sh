@@ -84,6 +84,12 @@ rm -r $HOME/.config/kitty > /dev/null 2>&1
 ln -sf $DIR/config/kitty $HOME/.config/kitty
 
 
+echo "installing alacritty"
+rm -r $HOME/.config/alacritty > /dev/null 2>&1
+ln -sf $DIR/config/alacritty $HOME/.config/alacritty
+
+
+
 echo "installing wez term"
 rm -r $HOME/.config/wezterm > /dev/null 2>&1
 ln -sf $DIR/config/wezterm $HOME/.config/wezterm

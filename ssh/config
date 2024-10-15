@@ -17,7 +17,6 @@ Host nas
 Host hydra
     Hostname hydra30.eecs.utk.edu
     User jmalloy1
-    ForwardAgent yes
 Host tesla
     Hostname tesla25.eecs.utk.edu
     User jmalloy1
@@ -43,6 +42,9 @@ Host desktop
     User sjake
 Host desktop-tailscale
     Hostname 100.127.239.15
+    User jmalloy
+Host popos
+    Hostname 100.116.72.81
     User jmalloy
 Host plex-dvr
     Hostname 10.0.0.75

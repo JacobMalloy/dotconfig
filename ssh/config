@@ -90,3 +90,7 @@ Host intel
     Hostname ssh-iam.intel-research.net
     User jmalloy1
     ForwardAgent yes
+Host ml
+    Hostname tau.ky4nw.com
+    User cosc522
+    Port 545

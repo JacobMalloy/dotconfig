@@ -11,11 +11,11 @@ decorations = "Full"
 
 [font]
 
-normal.family = "Cascadia Code PL"
-bold.family = "Cascadia Code PL"
-italic.family = "Cascadia Code PL"
-bold_italic.family = "Cascadia Code PL"
+normal.family = "Monaspace Neon"
+bold.family = "Monaspace Neon"
+italic.family = "Monaspace Neon"
+bold_italic.family = "Monaspace Neon"
 
-size = 15.0
+size = 17.0
 
 

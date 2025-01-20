@@ -41,7 +41,7 @@ Host desktop
     Hostname 10.6.0.5
     User sjake
 Host desktop-tailscale
-    Hostname 100.127.239.15
+    Hostname 100.82.132.103
     User jmalloy
 Host popos
     Hostname 100.116.72.81

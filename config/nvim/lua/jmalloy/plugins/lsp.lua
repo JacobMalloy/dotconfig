@@ -86,6 +86,12 @@ return {
                     capabilities = capabilities,
                 })
             end,
+            ["lua_ls"] = function()
+                nvim_lsp["lua_lsp"].setup({
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                })
+            end,
         })
     end,
 }

@@ -20,6 +20,7 @@ return {
                 "clangd",
                 "rust_analyzer",
                 "texlab",
+                "lua_ls",
             },
         })
 
@@ -29,7 +30,6 @@ return {
                 "stylua", -- lua formatter
                 "isort", -- python formatter
                 "black", -- python formatter
-                "pylint",
                 "eslint_d",
                 "clang-format",
             },

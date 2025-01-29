@@ -34,6 +34,7 @@ return {
                 "gitignore",
                 "c",
                 "rust",
+                "latex",
             },
             incremental_selection = {
                 enable = true,

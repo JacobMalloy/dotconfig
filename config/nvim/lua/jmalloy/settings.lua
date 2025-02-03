@@ -41,5 +41,7 @@ o.splitbelow = true  -- When on, splitting a window will put the new window belo
 o.termguicolors = true
 o.wrap = false
 
+-- vim.lsp.inlay_hint.enable(true)
+
 --vim.cmd("colorscheme onedark")
 require("onedark").load()

@@ -9,15 +9,15 @@ o.number = true         -- Print the line number in front of each line
 o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
 -- o.clipboard = "unnamedplus" -- uses the clipboard register for all operations except yank.
 global.clipboard = {
-	name = 'OSC 52',
-	copy = {
-		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-	},
-	paste = {
-		['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-		['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-	},
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
 }
 o.syntax = "on"      -- When this option is set, the syntax with this name is loaded.
 o.autoindent = true  -- Copy indent from current line when starting a new line.
@@ -40,8 +40,6 @@ o.splitright = true
 o.splitbelow = true  -- When on, splitting a window will put the new window below the current one
 o.termguicolors = true
 o.wrap = false
-
--- vim.lsp.inlay_hint.enable(true)
 
 --vim.cmd("colorscheme onedark")
 require("onedark").load()

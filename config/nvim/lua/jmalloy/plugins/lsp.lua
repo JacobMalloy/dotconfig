@@ -26,8 +26,8 @@ return {
         })
       end
 
-      if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+        vim.lsp.inlay_hint.enable(true,{bufnr=bufnr})
       end
     end
 

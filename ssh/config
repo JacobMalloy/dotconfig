@@ -37,21 +37,11 @@ Host uruguay
     Hostname uruguay.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
-Host desktop
-    Hostname 10.6.0.5
-    User sjake
 Host desktop-tailscale
     Hostname 100.82.132.103
     User jmalloy
-Host popos
-    Hostname 100.116.72.81
-    User jmalloy
-Host plex-dvr
-    Hostname 10.0.0.75
-    User jmalloy
-    ForwardAgent yes
-Host plex-dvr-wireguard
-    Hostname 10.6.0.7
+Host plex-dvr-tailscale
+    Hostname 100.111.147.40
     User jmalloy
     ForwardAgent yes
 Host chile
@@ -90,7 +80,3 @@ Host intel
     Hostname ssh-iam.intel-research.net
     User jmalloy1
     ForwardAgent yes
-Host ml
-    Hostname tau.ky4nw.com
-    User cosc522
-    Port 545

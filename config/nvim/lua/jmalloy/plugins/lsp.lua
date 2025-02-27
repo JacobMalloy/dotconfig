@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    --"hrsh7th/cmp-nvim-lsp",
   },
   opts = {
     inlay_hints = { enabled = true },
@@ -15,15 +15,6 @@ return {
 
     local on_attach = function(client, bufnr)
       -- format on save
-      if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = vim.api.nvim_create_augroup("Format", { clear = true }),
-          buffer = bufnr,
-          callback = function()
-            vim.lsp.buf.format()
-          end,
-        })
-      end
 
       --if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
       -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
@@ -123,30 +114,30 @@ return {
     })
 
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    --local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     mason_lspconfig.setup_handlers({
       function(server)
         nvim_lsp[server].setup({
-          capabilities = capabilities,
+          --     capabilities = capabilities,
         })
       end,
       ["cssls"] = function()
         nvim_lsp["cssls"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["clangd"] = function()
         nvim_lsp["clangd"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["rust_analyzer"] = function()
         nvim_lsp["rust_analyzer"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
           settings = {
             ["rust-analyzer"] = {
               inlayHints = {
@@ -161,43 +152,50 @@ return {
       ["tailwindcss"] = function()
         nvim_lsp["tailwindcss"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["html"] = function()
         nvim_lsp["html"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["jsonls"] = function()
         nvim_lsp["jsonls"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["eslint"] = function()
         nvim_lsp["eslint"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["pyright"] = function()
         nvim_lsp["pyright"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
       ["texlab"] = function()
         nvim_lsp["texlab"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
+          settings = {
+            texlab = {
+              build = {
+                onSave = true
+              }
+            }
+          }
         })
       end,
       ["lua_ls"] = function()
         nvim_lsp["lua_ls"].setup({
           on_attach = on_attach,
-          capabilities = capabilities,
+          -- capabilites = capabilities,
         })
       end,
     })

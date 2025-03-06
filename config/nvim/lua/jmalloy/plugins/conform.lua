@@ -31,6 +31,9 @@ return { -- Autoformat
       --lua = { 'stylua' },
 
       -- Conform can also run multiple formatters sequentially
+      rust = { "rust-analyzer" },
+      cpp = { "clang-format" },
+      c = { "clang-format" },
       python = { "isort", "black" } --{ "isort", "black" },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list

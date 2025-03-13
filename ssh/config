@@ -44,6 +44,10 @@ Host plex-dvr-tailscale
     Hostname 100.111.147.40
     User jmalloy
     ForwardAgent yes
+Host apartpi
+    Hostname 100.125.237.1
+    User jmalloy
+    ForwardAgent yes
 Host chile
     Hostname chile.eecs.utk.edu
     User jmalloy1

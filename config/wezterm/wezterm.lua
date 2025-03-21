@@ -2,19 +2,16 @@
 local wezterm = require 'wezterm'
 
 -- This table will hold the configuration.
-local config = {}
+local config = wezterm.config_builder()
+local action = wezterm.action
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
+local current_system = "linux"
 
 
 if string.find(wezterm.target_triple, "darwin") then
-  print("macos")
+  current_system = "macos"
 elseif string.find(wezterm.target_triple, "win32") then
-  print("windows")
+  current_system = "windows"
 end
 
 -- This is where you actually apply your config choices
@@ -31,13 +28,20 @@ config.font_size = 15
 
 
 config.color_scheme = 'Dark+'
+
+
+
+
 config.default_cursor_style = "SteadyBar"
 
+config.window_padding = { left = '0.5cell', right = '0.5cell', top = '0.5cell', bottom = '0.5cell' }
 
 config.colors = {
   cursor_bg = '#ff2040',
   background = 'hsv(0,0%,2%)'
 }
+
+
 
 -- config.front_end = 'WebGpu'
 -- config.front_end = 'OpenGL'
@@ -54,18 +58,18 @@ config.macos_window_background_blur = 20
 
 config.audible_bell = "Disabled"
 
-window_background_opacity = 0.8
-text_background_opacity = 0.5
+local window_background_opacity = 0.8
+local text_background_opacity = 0.5
 
 
-if string.find(wezterm.target_triple, "windows") then
+if current_system == "windows" then
   window_background_opacity = .5
-  text_background_opacity = window_background_opacity;
+  text_background_opacity = config.window_background_opacity;
   config.win32_system_backdrop = "Acrylic"
-  config.front_end = "OpenGL"
-elseif string.find(wezterm.target_triple, "linux") then
+  -- config.front_end = "OpenGL"
+elseif current_system == "linux" then
   window_background_opacity = 0.85
-  text_background_opacity = window_background_opacity;
+  text_background_opacity = config.window_background_opacity;
 end
 
 

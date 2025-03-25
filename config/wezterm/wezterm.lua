@@ -64,12 +64,12 @@ local text_background_opacity = 0.5
 
 if current_system == "windows" then
   window_background_opacity = .5
-  text_background_opacity = config.window_background_opacity;
+  text_background_opacity = window_background_opacity;
   config.win32_system_backdrop = "Acrylic"
   -- config.front_end = "OpenGL"
 elseif current_system == "linux" then
   window_background_opacity = 0.85
-  text_background_opacity = config.window_background_opacity;
+  text_background_opacity = window_background_opacity;
 end
 
 

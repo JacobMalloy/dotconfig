@@ -7,3 +7,4 @@ end
 
 map("i", "jj", "<ESC>")
 map('i', '<C-k>', vim.lsp.buf.signature_help)
+map('n', '<BS>', '<C-o>')

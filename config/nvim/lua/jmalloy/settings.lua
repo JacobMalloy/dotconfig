@@ -23,8 +23,8 @@ o.syntax = "on"      -- When this option is set, the syntax with this name is lo
 o.autoindent = true  -- Copy indent from current line when starting a new line.
 o.cursorline = true  -- Highlight the screen line of the cursor with CursorLine.
 o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
-o.shiftwidth = 2     -- Number of spaces to use for each step of (auto)indent.
-o.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for.
+o.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent.
+o.tabstop = 4        -- Number of spaces that a <Tab> in the file counts for.
 o.encoding = "UTF-8" -- Sets the character encoding used inside Vim.
 o.ruler = true       -- Show the line and column number of the cursor position, separated by a comma.
 o.mouse = "a"        -- Enable the use of the mouse. "a" you can use on all modes
@@ -40,6 +40,15 @@ o.splitright = true
 o.splitbelow = true  -- When on, splitting a window will put the new window below the current one
 o.termguicolors = true
 o.wrap = false
+o.winborder = 'rounded'
+
+
+vim.diagnostic.config({
+  virtual_text = true,
+  virtual_lines = {
+    current_line = true,
+  }
+})
 
 --vim.cmd("colorscheme onedark")
 require("onedark").load()

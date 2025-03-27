@@ -50,7 +50,7 @@ vim.diagnostic.config({
     }
 })
 
-vim.lsp.enable({ 'clangd', 'lua' })
+vim.lsp.enable({ 'clangd', 'lua', 'rust-analyzer' })
 
 
 --vim.cmd("colorscheme onedark")

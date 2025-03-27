@@ -1,3 +1,3 @@
-require("jmalloy.maps")
-require("jmalloy.lazy")
-require("jmalloy.settings")
+require("config.maps")
+require("config.lazy")
+require("config.settings")

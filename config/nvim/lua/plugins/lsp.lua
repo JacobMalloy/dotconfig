@@ -4,6 +4,9 @@ return {
     dependencies = {
         --"hrsh7th/cmp-nvim-lsp",
     },
+    opts = {
+        inlay_hints = { enabled = true },
+    },
     config = function()
         local nvim_lsp = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")
@@ -63,6 +66,12 @@ return {
                 -- code, if the language server you are using supports them
                 --
                 -- This may be unwanted, since they displace some of your code
+                if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    map('<leader>th', function()
+                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+                    end, '[T]oggle Inlay [H]ints')
+                    vim.lsp.inlay_hint.enable(true)
+                end
             end,
         })
 

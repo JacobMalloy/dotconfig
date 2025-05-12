@@ -17,8 +17,17 @@ Host nas
 Host hydra
     Hostname hydra30.eecs.utk.edu
     User jmalloy1
+    ForwardAgent yes
+Host hydra*
+    Hostname %h.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes
 Host tesla
-    Hostname tesla10.eecs.utk.edu
+    Hostname tesla25.eecs.utk.edu
+    User jmalloy1
+    ForwardAgent yes
+Host tesla*
+    Hostname %h.eecs.utk.edu
     User jmalloy1
     ForwardAgent yes
 Host peru

@@ -15,7 +15,7 @@ return {
                 "html",
                 "jsonls",
                 --"tsserver",
-                "pyright",
+                "basedpyright",
                 "tailwindcss",
                 "clangd",
                 "rust_analyzer",

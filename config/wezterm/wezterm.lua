@@ -70,7 +70,7 @@ if current_system == "windows" then
 elseif current_system == "linux" then
     window_background_opacity = 0.85
     text_background_opacity = window_background_opacity;
-    config.front_end = 'WebGpu'
+    -- config.front_end = 'OpenGL'
 end
 
 

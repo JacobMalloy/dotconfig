@@ -76,8 +76,8 @@ ln -f $DIR/ssh/config $HOME/.ssh/config
 chmod 644 ~/.ssh/config
 
 
-ln -f $DIR/ssh/rc $HOME/.ssh/rc
-chmod 644 ~/.ssh/rc
+#ln -f $DIR/ssh/rc $HOME/.ssh/rc
+#chmod 644 ~/.ssh/rc
 
 echo "installing kitty"
 rm -r $HOME/.config/kitty > /dev/null 2>&1

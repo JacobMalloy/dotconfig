@@ -32,6 +32,7 @@ o.splitbelow = true  -- When on, splitting a window will put the new window belo
 o.termguicolors = true
 o.wrap = false
 o.winborder = 'rounded'
+o.spelllang = 'en_us'
 
 
 vim.diagnostic.config({

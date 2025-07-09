@@ -45,6 +45,10 @@ vim.diagnostic.config({
 
 -- vim.lsp.enable({ 'clangd', 'lua', 'rust-analyzer' })
 
-
+if vim.o.termguicolors then
+    vim.cmd.colorscheme('onedark')
+else
+    vim.cmd.colorshceme('desert')
+end
 --vim.cmd("colorscheme onedark")
-require("onedark").load()
+-- require("onedark").load()

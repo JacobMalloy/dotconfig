@@ -37,12 +37,13 @@ o.spelllang = 'en_us'
 
 vim.diagnostic.config({
     virtual_text = true,
-    virtual_lines = {
-        current_line = true,
-    }
+    underline = true,
+    update_in_insert = true,
+    severity_sort = true,
+    virtual_lines = false,
 })
 
-vim.lsp.enable({ 'clangd', 'lua', 'rust-analyzer' })
+-- vim.lsp.enable({ 'clangd', 'lua', 'rust-analyzer' })
 
 
 --vim.cmd("colorscheme onedark")

@@ -1,7 +1,7 @@
 # $HOME/.config/alacritty/alacritty.toml
 [window]
 
-opacity = 0.8
+opacity = 0.9
 blur = true
 
 padding.x = 2
@@ -25,3 +25,6 @@ transparent_background_colors = true
 
 [cursor]
 style = {shape= "Beam",blinking = "Off"}
+
+[scrolling]
+history=0

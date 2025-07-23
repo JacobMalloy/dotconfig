@@ -68,3 +68,4 @@ compile_commands.json
 *.fls
 
 .cache/
+*.dvi

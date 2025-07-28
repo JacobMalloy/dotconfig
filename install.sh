@@ -37,26 +37,17 @@ echo "installing aliases"
 
 mkdir -p $HOME/.config
 
-ln -f $DIR/config/aliases $HOME/.config/aliases
-
-echo "installing environment variables"
-ln -f $DIR/config/variables $HOME/.config/variables
-source $HOME/.config/variables
 
 echo "installing git files"
 
 ln -sf $DIR/gitconfig $HOME/.gitconfig
 ln -sf $DIR/gitignore $HOME/.gitignore
 
-echo "install tmux conf"
-
-$CC $CCFlags $DIR/config/mem-cpu.c -lm -o $HOME/.config/tmux-performance
-ln -f $DIR/tmux.conf $HOME/.tmux.conf
+echo "Build tmux-performance"
+$CC $CCFlags $DIR/config/mem-cpu.c -lm -o $DIR/config/tmux-performance
 
 echo "install zsh"
-mkdir -p $HOME/.config/zsh
 
-ln -f $DIR/config/zsh/zshrc $HOME/.config/zsh/.zshrc
 ln -f $DIR/zshenv $HOME/.zshenv
 
 echo "install bashrc"
@@ -79,33 +70,17 @@ chmod 644 ~/.ssh/config
 ln -f $DIR/ssh/rc $HOME/.ssh/rc
 chmod 644 ~/.ssh/rc
 
-echo "installing kitty"
-rm -r $HOME/.config/kitty > /dev/null 2>&1
-ln -sf $DIR/config/kitty $HOME/.config/kitty
+echo "Copy existing .config"
+FILE_PATH="$HOME/.config"
+EXPECTED_TARGET="$DIR/config"
+if [ ! -L "$FILE_PATH" ] || [ "$(readlink "$FILE_PATH")" != "$EXPECTED_TARGET" ]; then
+    cp -RLn $HOME/.config/* $DIR/config
+    #rm -r $HOME/.config > /dev/null 2>&1
+    ln -sF $DIR/config $HOME/.config
+fi
 
-
-echo "installing alacritty"
-rm -r $HOME/.config/alacritty > /dev/null 2>&1
-ln -sf $DIR/config/alacritty $HOME/.config/alacritty
-
-
-
-echo "installing wez term"
-rm -r $HOME/.config/wezterm > /dev/null 2>&1
-ln -sf $DIR/config/wezterm $HOME/.config/wezterm
-
-echo "installing neovim"
-rm -r $HOME/.config/nvim > /dev/null 2>&1
-ln -sf $DIR/config/nvim $HOME/.config/nvim
-
-echo "installing perf config"
-rm -r $HOME/.perfconfig > /dev/null 2>&1
-ln -sf $DIR/perfconfig $HOME/.perfconfig
-
-echo "installing clang-format config"
-rm -r $HOME/.clang-format > /dev/null 2>&1
-ln -sf $DIR/clang-format $HOME/.clang-format
-
+echo "installing environment variables"
+source $HOME/.config/variables
 
 if [ "${YED}" != "no" ]; then
     ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE

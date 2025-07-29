@@ -33,6 +33,7 @@ o.termguicolors = true
 o.wrap = false
 o.winborder = 'rounded'
 o.spelllang = 'en_us'
+o.exrc = true
 
 
 vim.diagnostic.config({

@@ -2,9 +2,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
   config = function()
     local treesitter = require("nvim-treesitter.configs")
 
@@ -35,9 +32,9 @@ return {
         "c",
         "rust",
         "latex",
+        "elixir",
       },
-      incremental_selection = {
-        enable = true,
+      incremental_selection = { enable = true,
         keymaps = {
           init_selection = "<C-space>",
           node_incremental = "<C-space>",

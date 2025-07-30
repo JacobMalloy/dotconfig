@@ -1,5 +1,3 @@
--- ~/nvim/lua/slydragonn/settings.lua
-
 local global = vim.g
 local o = vim.opt
 
@@ -11,7 +9,7 @@ o.relativenumber = true -- Show the line number relative to the line with the cu
 global.clipboard = 'osc52'
 
 o.syntax = "on"      -- When this option is set, the syntax with this name is loaded.
-o.autoindent = true  -- Copy indent from current line when starting a new line.
+o.smartindent = true -- Copy indent from current line when starting a new line.
 o.cursorline = true  -- Highlight the screen line of the cursor with CursorLine.
 o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 o.shiftwidth = 4     -- Number of spaces to use for each step of (auto)indent.

@@ -94,6 +94,11 @@ echo "installing wez term"
 rm -r $HOME/.config/wezterm > /dev/null 2>&1
 ln -sf $DIR/config/wezterm $HOME/.config/wezterm
 
+echo "installing ghostty"
+rm -r $HOME/.config/ghostty > /dev/null 2>&1
+ln -sf $DIR/config/ghostty $HOME/.config/ghostty
+
+
 echo "installing neovim"
 rm -r $HOME/.config/nvim > /dev/null 2>&1
 ln -sf $DIR/config/nvim $HOME/.config/nvim

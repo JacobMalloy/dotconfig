@@ -2,3 +2,4 @@ background-opacity = 0.95
 background-blur = 20
 cursor-color = ff0000
 cursor-style = bar
+font-feature = -calt, -liga, -dlig 

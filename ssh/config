@@ -24,10 +24,12 @@ Host hydra*
     ForwardAgent yes
 Host tesla
     Hostname tesla25.eecs.utk.edu
+    SetEnv TERM=xterm-256color
     User jmalloy1
     ForwardAgent yes
 Host tesla*
     Hostname %h.eecs.utk.edu
+    SetEnv TERM=xterm-256color
     User jmalloy1
     ForwardAgent yes
 Host peru

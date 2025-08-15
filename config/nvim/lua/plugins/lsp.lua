@@ -1,25 +1,13 @@
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        --"hrsh7th/cmp-nvim-lsp",
-    },
-    opts = {
-        inlay_hints = { enabled = true },
-    },
     config = function()
-        local nvim_lsp = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
 
-        local protocol = require("vim.lsp.protocol")
-
-        local on_attach = function(client, bufnr)
-            -- format on save
-
-            --if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-            --end
+        local lsps = {"clangd","rust_analyzer","basedpyright","lua_ls"}
+        for _,lsp in ipairs(lsps)do
+            vim.lsp.enable(lsp);
         end
+
 
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

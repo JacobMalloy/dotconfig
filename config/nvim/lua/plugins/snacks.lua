@@ -1,6 +1,7 @@
 return {
     "folke/snacks.nvim",
     ---@type snacks.Config
+    enabled = true,
     opts = {
         picker = {
             -- your picker configuration comes here

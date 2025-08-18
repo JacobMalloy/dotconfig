@@ -42,29 +42,19 @@ vim.diagnostic.config({
     virtual_lines = false,
 })
 
--- vim.lsp.enable({ 'clangd', 'lua', 'rust-analyzer' })
-vim.o.termguicolors = false;
--- Check if the terminal supports true colors based on environment variables
-local has_true_colors = os.getenv("COLORTERM") == "truecolor" or os.getenv("COLORTERM") == "24bit"
+-- Check if the terminal supports true colors
+local colorterm = os.getenv("COLORTERM") or ""
+local has_true_colors = colorterm:find("truecolor") or colorterm:find("24bit")
 
-if has_true_colors then
-  -- Enable true colors in Neovim
-  vim.o.termguicolors = true
-end
-
--- You can also add more specific checks if needed
--- For example, to handle terminals like iTerm2 or WezTerm
+-- Check for known terminals with good truecolor support
 local term_program = os.getenv("TERM_PROGRAM")
-if term_program == "iTerm.app" or term_program == "WezTerm" then
+if has_true_colors or term_program == "iTerm.app" or term_program == "WezTerm" or term_program == "ghostty" then
   vim.o.termguicolors = true
 end
 
-
-
-if vim.o.termguicolors then
-    vim.cmd.colorscheme('onedark')
-else
-    vim.cmd.colorscheme('desert')
+-- Apply colorscheme safely
+local ok = pcall(vim.cmd.colorscheme, vim.o.termguicolors and "onedark" or "desert")
+if not ok then
+  vim.cmd.colorscheme("default")
 end
---vim.cmd("colorscheme onedark")
--- require("onedark").load()
+

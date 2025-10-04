@@ -3,7 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
 
-        local lsps = {"clangd","rust_analyzer","basedpyright","lua_ls"}
+        local lsps = {"clangd","rust_analyzer","basedpyright","lua_ls","texlab"}
         for _,lsp in ipairs(lsps)do
             vim.lsp.enable(lsp);
         end

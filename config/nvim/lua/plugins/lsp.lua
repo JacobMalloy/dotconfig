@@ -1,12 +1,21 @@
-return {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
+local return_value = {}
+
+
+local function run_setup()
+
+local harper_default_config = require('lspconfig.configs.harper_ls')
+        vim.lsp.config("harper_ls",{
+            filetypes = vim.list_extend(
+                vim.deepcopy(harper_default_config.default_config.filetypes or {}),
+                {'tex'}
+            )
+        })
 
         local lsps = {"clangd","rust_analyzer","basedpyright","lua_ls","texlab","harper_ls"}
         for _,lsp in ipairs(lsps)do
             vim.lsp.enable(lsp);
         end
+
 
 
         vim.api.nvim_create_autocmd('LspAttach', {
@@ -64,6 +73,33 @@ return {
         })
 
 
-        --local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    end,
-}
+
+
+end
+
+function return_value.setup()
+    local deps = require('mini.deps')
+    local add,now = deps.add,deps.now
+
+
+    add({source = "neovim/nvim-lspconfig"})
+
+
+
+    now(function ()
+    -- Create an augroup (optional but recommended for organization) 
+    local augroup = vim.api.nvim_create_augroup('MyOneTimeGroup', { clear = true })
+
+    -- Create an autocmd that runs only once
+    vim.api.nvim_create_autocmd({'BufReadPre',"BufNewFile"}, {
+      group = augroup,
+      once = true,  -- This makes it run only once
+      callback =  run_setup,
+  })
+  end)
+
+
+end
+
+
+return return_value

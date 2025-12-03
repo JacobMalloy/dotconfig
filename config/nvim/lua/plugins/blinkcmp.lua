@@ -45,7 +45,7 @@ end
 function return_value.setup()
     local deps = require('mini.deps')
     local add, later = deps.add, deps.later
-    add({ source = "saghen/blink.cmp", depends = { "rafamadriz/friendly-snippets" } ,checkout='v1.7.0'})
+    add({ source = "saghen/blink.cmp", depends = { "rafamadriz/friendly-snippets" } ,checkout='v1.7.0',monitor='main'})
     later(my_setup)
 end
 

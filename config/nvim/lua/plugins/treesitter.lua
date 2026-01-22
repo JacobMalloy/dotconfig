@@ -1,58 +1,48 @@
 local return_value = {}
 
+local parsers = {
+    "json",
+    "javascript",
+    "typescript",
+    "tsx",
+    "yaml",
+    "html",
+    "css",
+    "markdown",
+    "markdown_inline",
+    "bash",
+    "lua",
+    "vim",
+    "vimdoc",
+    "dockerfile",
+    "gitignore",
+    "c",
+    "rust",
+    "latex",
+    "elixir",
+}
 
 local function run_setup()
-    local treesitter = require("nvim-treesitter")
+    -- Install parsers (this is now a separate step in the new API)
+    require("nvim-treesitter").install(parsers)
 
-    treesitter.setup({
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false,
-        },
-        indent = { enable = false },
-        autotag = {
-            enable = true,
-        },
-        ensure_installed = {
-            "json",
-            "javascript",
-            "typescript",
-            "tsx",
-            "yaml",
-            "html",
-            "css",
-            "markdown",
-            "markdown_inline",
-            "bash",
-            "lua",
-            "vim",
-            "dockerfile",
-            "gitignore",
-            "c",
-            "rust",
-            "latex",
-            "elixir",
-        },
-        incremental_selection = {
-            enable = true,
-            keymaps = {
-                init_selection = "<C-space>",
-                node_incremental = "<C-space>",
-                scope_incremental = false,
-                node_decremental = "<bs>",
-            },
-        },
-        rainbow = {
-            enable = true,
-            disable = { "html" },
-            extended_mode = false,
-            max_file_lines = nil,
-        },
-        context_commentstring = {
-            enable = true,
-            enable_autocmd = false,
-        },
+    -- Enable treesitter highlighting for all filetypes with available parsers
+    vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+            pcall(vim.treesitter.start)
+        end,
     })
+
+    -- Incremental selection keymaps
+    vim.keymap.set("n", "<C-space>", function()
+        require("nvim-treesitter.incremental_selection").init_selection()
+    end, { desc = "Start incremental selection" })
+    vim.keymap.set("x", "<C-space>", function()
+        require("nvim-treesitter.incremental_selection").node_incremental()
+    end, { desc = "Increment selection to node" })
+    vim.keymap.set("x", "<bs>", function()
+        require("nvim-treesitter.incremental_selection").node_decremental()
+    end, { desc = "Decrement selection to node" })
 end
 
 local function build()

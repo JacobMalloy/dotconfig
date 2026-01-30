@@ -69,6 +69,10 @@ local function run_setup()
                 })
             end
 
+            map('K', vim.lsp.buf.hover, 'Hover Documentation')
+            map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+            map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+
             -- The following code creates a keymap to toggle inlay hints in your
             -- code, if the language server you are using supports them
             --

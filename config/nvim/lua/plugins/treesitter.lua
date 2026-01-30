@@ -23,8 +23,11 @@ local parsers = {
 }
 
 local function run_setup()
-    -- Install parsers (this is now a separate step in the new API)
-    require("nvim-treesitter").install(parsers)
+    -- Install parsers (new main branch API)
+    local ts = require("nvim-treesitter")
+    if ts.install then
+        ts.install(parsers)
+    end
 
     -- Enable treesitter highlighting for all filetypes with available parsers
     vim.api.nvim_create_autocmd("FileType", {
@@ -34,15 +37,18 @@ local function run_setup()
     })
 
     -- Incremental selection keymaps
-    vim.keymap.set("n", "<C-space>", function()
-        require("nvim-treesitter.incremental_selection").init_selection()
-    end, { desc = "Start incremental selection" })
-    vim.keymap.set("x", "<C-space>", function()
-        require("nvim-treesitter.incremental_selection").node_incremental()
-    end, { desc = "Increment selection to node" })
-    vim.keymap.set("x", "<bs>", function()
-        require("nvim-treesitter.incremental_selection").node_decremental()
-    end, { desc = "Decrement selection to node" })
+    local ok, inc_sel = pcall(require, "nvim-treesitter.incremental_selection")
+    if ok then
+        vim.keymap.set("n", "<C-space>", function()
+            inc_sel.init_selection()
+        end, { desc = "Start incremental selection" })
+        vim.keymap.set("x", "<C-space>", function()
+            inc_sel.node_incremental()
+        end, { desc = "Increment selection to node" })
+        vim.keymap.set("x", "<bs>", function()
+            inc_sel.node_decremental()
+        end, { desc = "Decrement selection to node" })
+    end
 end
 
 local function build()
@@ -62,14 +68,7 @@ function return_value.setup()
 
     now(function()
         -- Create an augroup (optional but recommended for organization)
-        local augroup = vim.api.nvim_create_augroup('OneTimeGroup-treesitter', { clear = true })
-
-        -- Create an autocmd that runs only once
-        vim.api.nvim_create_autocmd({ 'BufReadPre', "BufNewFile" }, {
-            group = augroup,
-            once = true, -- This makes it run only once
-            callback = run_setup,
-        })
+        run_setup()
     end)
 end
 

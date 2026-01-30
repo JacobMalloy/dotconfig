@@ -19,4 +19,5 @@ require('plugins.treesitter').setup()
 require('plugins.blinkcmp').setup()
 require('plugins.indent').setup()
 require('plugins.debug').setup()
+require('plugins.whichkey').setup()
 

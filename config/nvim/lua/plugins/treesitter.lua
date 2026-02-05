@@ -22,11 +22,21 @@ local parsers = {
     "elixir",
 }
 
+local function is_parser_installed(lang)
+    local ok = pcall(vim.treesitter.language.inspect, lang)
+    return ok
+end
+
 local function run_setup()
-    -- Install parsers (new main branch API)
+    -- Install parsers (new main branch API), only if not already installed
     local ts = require("nvim-treesitter")
     if ts.install then
-        ts.install(parsers)
+        local missing = vim.tbl_filter(function(p)
+            return not is_parser_installed(p)
+        end, parsers)
+        if #missing > 0 then
+            ts.install(missing)
+        end
     end
 
     -- Enable treesitter highlighting for all filetypes with available parsers

@@ -59,7 +59,7 @@ function return_value.setup()
         source = "saghen/blink.cmp",
         depends = { "rafamadriz/friendly-snippets", "joelazar/blink-calc" },
         checkout =
-        'v1.7.0',
+        'v1.9.1',
         monitor = 'main'
     })
     later(my_setup)

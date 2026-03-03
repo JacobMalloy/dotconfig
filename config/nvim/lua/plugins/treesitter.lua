@@ -20,6 +20,7 @@ local parsers = {
     "rust",
     "latex",
     "elixir",
+    "zig",
 }
 
 local function is_parser_installed(lang)

@@ -21,7 +21,7 @@ local function run_setup()
         },
     })
 
-    local lsps = { "clangd", "rust_analyzer", "basedpyright", "lua_ls", "texlab", "harper_ls" }
+    local lsps = { "clangd", "rust_analyzer", "basedpyright", "lua_ls", "texlab", "harper_ls" ,"zls"}
     for _, lsp in ipairs(lsps) do
         vim.lsp.enable(lsp);
     end

@@ -17,6 +17,14 @@ local function run_setup()
                 check = {
                     command = "clippy",
                 },
+                procMacro = {
+                    enable = true,
+                },
+                cargo = {
+                    buildScripts = {
+                        enable = true,
+                    },
+                },
             },
         },
     })

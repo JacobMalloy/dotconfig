@@ -8,7 +8,7 @@ Host linux
     User jmalloy
     ForwardAgent yes
 Host vpn
-    Hostname 100.114.5.130
+    Hostname 192.168.86.105
     User jmalloy
     ForwardAgent yes
 Host nas

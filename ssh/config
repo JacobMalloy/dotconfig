@@ -52,7 +52,7 @@ Host desktop-tailscale
     Hostname 100.82.132.103
     User jmalloy
 Host plex-dvr-tailscale
-    Hostname 100.111.147.40
+    Hostname 100.120.248.62
     User jmalloy
     ForwardAgent yes
 Host apartpi

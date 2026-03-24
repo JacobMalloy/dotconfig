@@ -38,6 +38,10 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 bindkey '^[[3~' delete-char
 bindkey '^[3;5~' delete-char
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 
 autoload -Uz vcs_info
 

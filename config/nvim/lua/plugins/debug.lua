@@ -30,7 +30,7 @@ local function setup_function()
   vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
   vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
   local breakpoint_icons = vim.g.have_nerd_font
-      and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+      and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
       or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
   for type, icon in pairs(breakpoint_icons) do
     local tp = 'Dap' .. type
@@ -134,11 +134,12 @@ local function later_setup()
 end
 
 function return_value.setup()
-  local deps = require("mini.deps")
-  local add, later = deps.add, deps.later
-  add({ source = 'mfussenegger/nvim-dap', depends = { 'rcarriga/nvim-dap-ui', 'nvim-neotest/nvim-nio', } })
-  later(later_setup)
+  vim.pack.add({
+      'https://github.com/mfussenegger/nvim-dap',
+      'https://github.com/rcarriga/nvim-dap-ui',
+      'https://github.com/nvim-neotest/nvim-nio',
+  })
+  vim.schedule(later_setup)
 end
 
 return return_value
-

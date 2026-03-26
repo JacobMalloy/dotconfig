@@ -1,12 +1,8 @@
 local return_value = {}
 
 function return_value.setup()
-    local deps = require('mini.deps')
-    local add, later = deps.add, deps.later
-
-    add({ source = 'folke/which-key.nvim' })
-
-    later(function()
+    vim.pack.add({ 'https://github.com/folke/which-key.nvim' })
+    vim.schedule(function()
         require('which-key').setup()
     end)
 end

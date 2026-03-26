@@ -53,16 +53,12 @@ local function my_setup()
 end
 
 function return_value.setup()
-    local deps = require('mini.deps')
-    local add, later = deps.add, deps.later
-    add({
-        source = "saghen/blink.cmp",
-        depends = { "rafamadriz/friendly-snippets", "joelazar/blink-calc" },
-        checkout =
-        'v1.10.1',
-        monitor = 'main'
+    vim.pack.add({
+        { src = 'https://github.com/saghen/blink.cmp', version = 'v1.10.1' },
+        'https://github.com/rafamadriz/friendly-snippets',
+        'https://github.com/joelazar/blink-calc',
     })
-    later(my_setup)
+    vim.schedule(my_setup)
 end
 
 return return_value

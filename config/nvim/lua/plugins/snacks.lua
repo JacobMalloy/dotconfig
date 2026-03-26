@@ -51,10 +51,8 @@ local function snacks_setup()
 end
 
 function return_value.setup()
-    local deps = require('mini.deps')
-    local add, now, later = deps.add, deps.now, deps.later
-    add({ source = 'folke/snacks.nvim' })
-    later(snacks_setup)
+    vim.pack.add({ 'https://github.com/folke/snacks.nvim' })
+    vim.schedule(snacks_setup)
 end
 
 return return_value

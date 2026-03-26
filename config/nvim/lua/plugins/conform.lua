@@ -48,10 +48,8 @@ local function my_setup()
 end
 
 function return_value.setup()
-    local deps = require('mini.deps')
-    local add, later = deps.add, deps.later
-    add({ source = 'stevearc/conform.nvim' })
-    later(my_setup)
+    vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
+    vim.schedule(my_setup)
 end
 
 return return_value

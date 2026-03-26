@@ -62,25 +62,18 @@ local function run_setup()
     end
 end
 
-local function build()
-    vim.schedule(function()
-        vim.cmd('TSUpdate')
-    end)
-end
-
 function return_value.setup()
-    local deps = require('mini.deps')
-    local add, now = deps.add, deps.now
+    vim.api.nvim_create_autocmd('PackChanged', {
+        callback = function(ev)
+            if ev.data.spec.name == 'nvim-treesitter'
+                and (ev.data.kind == 'install' or ev.data.kind == 'update') then
+                vim.schedule(function() vim.cmd('TSUpdate') end)
+            end
+        end,
+    })
 
-
-    add({ source = "nvim-treesitter/nvim-treesitter", checkout = 'main', hooks = { post_checkout = build, post_install = build } })
-
-
-
-    now(function()
-        -- Create an augroup (optional but recommended for organization)
-        run_setup()
-    end)
+    vim.pack.add({ { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } })
+    run_setup()
 end
 
 return return_value

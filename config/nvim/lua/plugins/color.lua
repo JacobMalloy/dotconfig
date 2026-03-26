@@ -1,12 +1,4 @@
-
-
-
-local deps = require('mini.deps')
-
-local add = deps.add
-
-
-add({source="tiagovla/tokyodark.nvim"})
-add({source="navarasu/onedark.nvim"})
-  
-
+vim.pack.add({
+    'https://github.com/tiagovla/tokyodark.nvim',
+    'https://github.com/navarasu/onedark.nvim',
+})

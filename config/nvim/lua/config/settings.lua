@@ -1,6 +1,8 @@
 local global = vim.g
 local o = vim.opt
 
+vim.g.mapleader = " "
+
 -- Editor options
 
 o.number = true         -- Print the line number in front of each line
@@ -8,7 +10,6 @@ o.relativenumber = true -- Show the line number relative to the line with the cu
 -- o.clipboard = "unnamedplus" -- uses the clipboard register for all operations except yank.
 global.clipboard = 'osc52'
 
-o.syntax = "on"      -- When this option is set, the syntax with this name is loaded.
 o.smartindent = true -- Copy indent from current line when starting a new line.
 o.cursorline = true  -- Highlight the screen line of the cursor with CursorLine.
 o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
@@ -27,7 +28,6 @@ o.inccommand =
 "split"              -- When nonempty, shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you type.
 o.splitright = true
 o.splitbelow = true  -- When on, splitting a window will put the new window below the current one
-o.termguicolors = true
 o.wrap = false
 o.winborder = 'rounded'
 o.spelllang = 'en_us'
@@ -48,13 +48,5 @@ local has_true_colors = colorterm:find("truecolor") or colorterm:find("24bit")
 
 -- Check for known terminals with good truecolor support
 local term_program = os.getenv("TERM_PROGRAM")
-if has_true_colors or term_program == "iTerm.app" or term_program == "WezTerm" or term_program == "ghostty" then
-  vim.o.termguicolors = true
-end
-
--- Apply colorscheme safely
-local ok = pcall(vim.cmd.colorscheme, vim.o.termguicolors and "onedark" or "desert")
-if not ok then
-  vim.cmd.colorscheme("default")
-end
+o.termguicolors = (has_true_colors or term_program == "iTerm.app" or term_program == "WezTerm" or term_program == "ghostty") and true or false
 

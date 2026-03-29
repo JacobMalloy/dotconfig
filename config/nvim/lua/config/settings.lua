@@ -46,7 +46,4 @@ vim.diagnostic.config({
 local colorterm = os.getenv("COLORTERM") or ""
 local has_true_colors = colorterm:find("truecolor") or colorterm:find("24bit")
 
--- Check for known terminals with good truecolor support
-local term_program = os.getenv("TERM_PROGRAM")
-o.termguicolors = (has_true_colors or term_program == "iTerm.app" or term_program == "WezTerm" or term_program == "ghostty") and true or false
-
+vim.o.termguicolors = true

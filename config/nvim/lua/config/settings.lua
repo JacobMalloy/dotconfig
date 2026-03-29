@@ -47,3 +47,7 @@ local colorterm = os.getenv("COLORTERM") or ""
 local has_true_colors = colorterm:find("truecolor") or colorterm:find("24bit")
 
 vim.o.termguicolors = true
+
+vim.api.nvim_create_user_command('PackUpdate', function()
+    vim.pack.update()
+end, {})

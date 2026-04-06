@@ -33,6 +33,8 @@ o.winborder = 'rounded'
 o.spelllang = 'en_us'
 o.exrc = true
 
+o.shell = 'sh'
+
 
 vim.diagnostic.config({
     virtual_text = true,

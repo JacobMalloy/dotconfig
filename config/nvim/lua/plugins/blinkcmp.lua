@@ -38,7 +38,6 @@ local opts = {
 
     },
 
-
     -- Blink.cmp uses a Rust fuzzy matcher by default for typo resistance and significantly better performance
     -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
@@ -54,7 +53,7 @@ end
 
 function return_value.setup()
     vim.pack.add({
-        { src = 'https://github.com/saghen/blink.cmp', version = 'v1.10.1' },
+        { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('>=1.0.0 <2.0.0') },
         'https://github.com/rafamadriz/friendly-snippets',
         'https://github.com/joelazar/blink-calc',
     })

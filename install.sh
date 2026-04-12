@@ -54,9 +54,8 @@ $CC $CCFlags $DIR/config/mem-cpu.c -lm -o $HOME/.config/tmux-performance
 ln -f $DIR/tmux.conf $HOME/.tmux.conf
 
 echo "install zsh"
-#mkdir -p $HOME/.config/zsh
-
-ln -sf $DIR/config/zsh $HOME/.config/zsh
+mkdir -p $HOME/.config/zsh
+ln -f $DIR/config/zsh/.zshrc $HOME/.config/zsh/.zshrc
 ln -f $DIR/zshenv $HOME/.zshenv
 
 echo "install bashrc"
@@ -75,9 +74,6 @@ chmod 600 ~/.ssh/authorized_keys
 ln -f $DIR/ssh/config $HOME/.ssh/config
 chmod 644 ~/.ssh/config
 
-
-ln -f $DIR/ssh/rc $HOME/.ssh/rc
-chmod 644 ~/.ssh/rc
 
 echo "installing kitty"
 rm -r $HOME/.config/kitty > /dev/null 2>&1

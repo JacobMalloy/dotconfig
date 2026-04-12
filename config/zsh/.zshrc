@@ -81,13 +81,15 @@ PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 
 
 
-if [[ -z "${SSH_AUTH_SOCK}" ]]; then
-    eval `ssh-agent -s` &> /dev/null
-    trap 'test -n "$SSH_AGENT_PID" && eval `/usr/bin/ssh-agent -k`' 0
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
-umask 007
+function ta() {
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    tmux attach "$@"
+}
 
-#export SSH_AUTH_SOCK="~/.ssh/ssh_auth_sock"
+umask 007
 
 #printf "\033]0;${HOST}\007"

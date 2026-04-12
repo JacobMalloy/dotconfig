@@ -1,0 +1,8 @@
+# Ignore everything - only track specific config files
+*
+.*
+
+# Keep these tracked files
+!.gitignore
+!settings.json
+!statusline-command.sh

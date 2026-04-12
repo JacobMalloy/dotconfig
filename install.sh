@@ -108,6 +108,25 @@ rm -r $HOME/.clang-format > /dev/null 2>&1
 ln -sf $DIR/clang-format $HOME/.clang-format
 
 
+echo "installing claude config"
+CLAUDE_SRC="$DIR/claude"
+CLAUDE_DEST="$HOME/.claude"
+
+if [ -L "$CLAUDE_DEST" ]; then
+    rm "$CLAUDE_DEST"
+elif [ -d "$CLAUDE_DEST" ]; then
+    echo "  migrating existing ~/.claude to $CLAUDE_SRC"
+    for item in "$CLAUDE_DEST"/.[!.]* "$CLAUDE_DEST"/*; do
+        [ -e "$item" ] || continue
+        fname=$(basename "$item")
+        if [ ! -e "$CLAUDE_SRC/$fname" ]; then
+            cp -r "$item" "$CLAUDE_SRC/$fname"
+        fi
+    done
+    rm -rf "$CLAUDE_DEST"
+fi
+ln -sf "$CLAUDE_SRC" "$CLAUDE_DEST"
+
 if [ "${YED}" != "no" ]; then
     ./yed_install.sh $YED_CORE_COMMAND $YED_YPM_UPDATE
 fi

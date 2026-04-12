@@ -1,0 +1,10 @@
+{
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/jmalloy/.claude/statusline-command.sh"
+  }
+}

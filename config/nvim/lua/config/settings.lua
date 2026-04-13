@@ -32,6 +32,7 @@ o.wrap = false
 o.winborder = 'rounded'
 o.spelllang = 'en_us'
 o.exrc = true
+o.modeline = false
 
 o.shell = 'sh'
 

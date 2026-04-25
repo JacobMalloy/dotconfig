@@ -69,3 +69,4 @@ compile_commands.json
 
 .cache/
 *.dvi
+.claude/

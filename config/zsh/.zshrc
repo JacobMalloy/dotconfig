@@ -1,5 +1,6 @@
 source $HOME/.config/aliases
 source $HOME/.config/variables
+source $HOME/.config/commands
 
 
 autoload -Uz compinit
@@ -84,11 +85,6 @@ PROMPT='%F{10}%m:%F{12}%~%f%F{1}${vcs_info_msg_0_}%f$'
 if [[ -z "$SSH_AUTH_SOCK" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
-
-function ta() {
-    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-    tmux attach "$@"
-}
 
 umask 007
 

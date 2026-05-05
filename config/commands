@@ -1,0 +1,19 @@
+function ta() {
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    tmux attach "$@"
+}
+
+# Copy to clipboard via OSC-52
+osc-copy() {
+  local buffer
+  if [[ -p /dev/stdin ]]; then
+    buffer=$(cat)
+  else
+    buffer=$*
+  fi
+
+  [[ -z "$buffer" ]] && return
+
+  local encoded=$(printf "%s" "$buffer" | base64 | tr -d '\n')
+  printf "\e]52;c;%s\a" "$encoded"
+}

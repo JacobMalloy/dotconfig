@@ -43,6 +43,9 @@ echo "installing environment variables"
 ln -f $DIR/config/variables $HOME/.config/variables
 source $HOME/.config/variables
 
+echo "installing commands"
+ln -f $DIR/config/commands $HOME/.config/commands
+
 echo "installing git files"
 
 ln -sf $DIR/gitconfig $HOME/.gitconfig

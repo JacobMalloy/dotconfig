@@ -1,4 +1,5 @@
 {
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "bash $HOME/.claude/statusline-command.sh"
@@ -7,5 +8,7 @@
     "clangd-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true
-  }
+  },
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true
 }

@@ -8,7 +8,14 @@ vim.g.mapleader = " "
 o.number = true         -- Print the line number in front of each line
 o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
 -- o.clipboard = "unnamedplus" -- uses the clipboard register for all operations except yank.
-global.clipboard = 'osc52'
+-- Spelled out instead of 'osc52' so the name is exactly "OSC 52": which-key checks for
+-- that and skips reading +/* in its register popup (each read is a terminal permission prompt).
+local osc52 = require('vim.ui.clipboard.osc52')
+global.clipboard = {
+    name = 'OSC 52',
+    copy = { ['+'] = osc52.copy('+'), ['*'] = osc52.copy('*') },
+    paste = { ['+'] = osc52.paste('+'), ['*'] = osc52.paste('*') },
+}
 
 o.smartindent = true -- Copy indent from current line when starting a new line.
 o.cursorline = true  -- Highlight the screen line of the cursor with CursorLine.
